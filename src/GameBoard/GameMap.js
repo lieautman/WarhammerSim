@@ -1,4 +1,3 @@
-import { useState } from "react";
 import GameFigurine from "./GameFigurine";
 
 function GameMap({
