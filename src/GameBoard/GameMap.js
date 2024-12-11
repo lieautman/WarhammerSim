@@ -21,7 +21,7 @@ function GameMap({ zoom, mapOffset }) {
       }}
       onMouseMove={(event) => {
         event.preventDefault();
-        if (event.altKey && figurineState.isSelected) {
+        if (event.shiftKey && figurineState.isSelected) {
           setFigurinepState({
             ...figurineState,
             X: event.clientX - startMouseOffset.X + endMouseOffset.X,
