@@ -1,14 +1,13 @@
 import { useState } from "react";
 import GameFigurine from "./GameFigurine";
 
-function GameMap({ zoom, mapOffset }) {
-  const [figurineState, setFigurinepState] = useState({
-    X: 0,
-    Y: 0,
-    isSelected: false
-  });
-  const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
-  const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
+function GameMap({
+  zoom,
+  mapOffset,
+  figurineState,
+  setFigurineStartMouseOffset,
+  setFigurineState
+}) {
   return (
     <div
       style={{
@@ -19,21 +18,21 @@ function GameMap({ zoom, mapOffset }) {
         left: `${mapOffset.X}px`,
         top: `${mapOffset.Y}px`
       }}
-      onMouseMove={(event) => {
-        event.preventDefault();
-        if (event.shiftKey && figurineState.isSelected) {
-          setFigurinepState({
-            ...figurineState,
-            X: event.clientX - startMouseOffset.X + endMouseOffset.X,
-            Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
-          });
-        } else {
-          setEndMouseOffset({
-            X: figurineState.X,
-            Y: figurineState.Y
-          });
-        }
-      }}
+      // onMouseMove={(event) => {
+      //   event.preventDefault();
+      //   if (event.shiftKey && figurineState.isSelected) {
+      //     setFigurinepState({
+      //       ...figurineState,
+      //       X: event.clientX - startMouseOffset.X + endMouseOffset.X,
+      //       Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
+      //     });
+      //   } else {
+      //     setEndMouseOffset({
+      //       X: figurineState.X,
+      //       Y: figurineState.Y
+      //     });
+      //   }
+      // }}
     >
       <div
         style={{
@@ -44,9 +43,9 @@ function GameMap({ zoom, mapOffset }) {
         <GameFigurine
           zoom={zoom}
           size={25}
-          setStartMouseOffset={setStartMouseOffset}
           figurineState={figurineState}
-          setFigurinepState={setFigurinepState}
+          setFigurineStartMouseOffset={setFigurineStartMouseOffset}
+          setFigurineState={setFigurineState}
         />
       </div>
 

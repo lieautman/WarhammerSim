@@ -7,6 +7,19 @@ function GameBoard() {
   const [mapOffset, setMapOffset] = useState({ X: 0, Y: 0 });
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
   const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
+  const [figurineState, setFigurineState] = useState({
+    X: 0,
+    Y: 0,
+    isSelected: false
+  });
+  const [figurineStartMouseOffset, setFigurineStartMouseOffset] = useState({
+    X: 0,
+    Y: 0
+  });
+  const [figurineEndMouseOffset, setFigurineEndMouseOffset] = useState({
+    X: 0,
+    Y: 0
+  });
 
   return (
     <div
@@ -38,6 +51,25 @@ function GameBoard() {
             Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
           });
         }
+        if (event.shiftKey && figurineState.isSelected) {
+          setFigurineState({
+            ...figurineState,
+            X:
+              event.clientX -
+              figurineStartMouseOffset.X +
+              figurineEndMouseOffset.X,
+            Y:
+              event.clientY -
+              figurineStartMouseOffset.Y +
+              figurineEndMouseOffset.Y
+          });
+        } else {
+          setFigurineStartMouseOffset({ X: event.clientX, Y: event.clientY });
+          setFigurineEndMouseOffset({
+            X: figurineState.X,
+            Y: figurineState.Y
+          });
+        }
       }}
       onMouseLeave={(event) => {
         event.preventDefault();
@@ -61,7 +93,13 @@ function GameBoard() {
       >
         Reset map
       </button>
-      <GameMap zoom={zoom} mapOffset={mapOffset} />
+      <GameMap
+        zoom={zoom}
+        mapOffset={mapOffset}
+        figurineState={figurineState}
+        setFigurineStartMouseOffset={setFigurineStartMouseOffset}
+        setFigurineState={setFigurineState}
+      />
     </div>
   );
 }
