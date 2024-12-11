@@ -1,14 +1,16 @@
-import { useState } from "react";
-
-function GameFigurine({ zoom, size, figurineOffset }) {
+function GameFigurine({
+  zoom,
+  size,
+  setStartMouseOffset,
+  figurineState,
+  setFigurinepState
+}) {
   const sizeDict = new Map([
     [25, 0.984251969],
     [28, 1.1023622],
     [32, 1.25984252],
     [40, 1.57480315]
   ]);
-
-  const [isSelected, setIsSelected] = useState(false);
   return (
     <div
       style={{
@@ -20,12 +22,19 @@ function GameFigurine({ zoom, size, figurineOffset }) {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        left: `${figurineOffset.X}px`,
-        top: `${figurineOffset.Y}px`,
-        border: `${isSelected ? "solid blue" : "none"}`
+        left: `${figurineState.X}px`,
+        top: `${figurineState.Y}px`,
+        border: `${figurineState.isSelected ? "solid blue" : "none"}`,
+        zIndex: 100
       }}
-      onClick={() => {
-        setIsSelected(!isSelected);
+      onClick={(event) => {
+        event.preventDefault();
+        setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+        setFigurinepState({
+          ...figurineState,
+          isSelected: !figurineState.isSelected
+        });
+        event.stopPropagation();
       }}
     ></div>
   );

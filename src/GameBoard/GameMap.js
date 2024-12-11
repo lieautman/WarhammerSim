@@ -2,7 +2,11 @@ import { useState } from "react";
 import GameFigurine from "./GameFigurine";
 
 function GameMap({ zoom, mapOffset }) {
-  const [figurineOffset, setFigurinepOffset] = useState({ X: 0, Y: 0 });
+  const [figurineState, setFigurinepState] = useState({
+    X: 0,
+    Y: 0,
+    isSelected: false
+  });
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
   const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
   return (
@@ -17,10 +21,16 @@ function GameMap({ zoom, mapOffset }) {
       }}
       onMouseMove={(event) => {
         event.preventDefault();
-        if (event.altKey) {
-          setFigurinepOffset({
+        if (event.altKey && figurineState.isSelected) {
+          setFigurinepState({
+            ...figurineState,
             X: event.clientX - startMouseOffset.X + endMouseOffset.X,
             Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
+          });
+        } else {
+          setEndMouseOffset({
+            X: figurineState.X,
+            Y: figurineState.Y
           });
         }
       }}
@@ -31,10 +41,13 @@ function GameMap({ zoom, mapOffset }) {
           display: "flex"
         }}
       >
-        <GameFigurine zoom={zoom} size={25} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={28} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={32} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={40} figurineOffset={figurineOffset} />
+        <GameFigurine
+          zoom={zoom}
+          size={25}
+          setStartMouseOffset={setStartMouseOffset}
+          figurineState={figurineState}
+          setFigurinepState={setFigurinepState}
+        />
       </div>
 
       <div
@@ -42,7 +55,8 @@ function GameMap({ zoom, mapOffset }) {
           width: `${44 * zoom}vh`,
           height: `${60 * zoom}vh`,
           backgroundColor: "black",
-          position: "relative"
+          position: "relative",
+          zIndex: 0
         }}
       ></div>
       <div
@@ -50,12 +64,7 @@ function GameMap({ zoom, mapOffset }) {
           height: `${5 * zoom}vh`,
           display: "flex"
         }}
-      >
-        <GameFigurine zoom={zoom} size={25} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={28} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={32} figurineOffset={figurineOffset} />
-        <GameFigurine zoom={zoom} size={40} figurineOffset={figurineOffset} />
-      </div>
+      ></div>
     </div>
   );
 }
