@@ -18,21 +18,6 @@ function GameMap({
         left: `${mapOffset.X}px`,
         top: `${mapOffset.Y}px`
       }}
-      // onMouseMove={(event) => {
-      //   event.preventDefault();
-      //   if (event.shiftKey && figurineState.isSelected) {
-      //     setFigurinepState({
-      //       ...figurineState,
-      //       X: event.clientX - startMouseOffset.X + endMouseOffset.X,
-      //       Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
-      //     });
-      //   } else {
-      //     setEndMouseOffset({
-      //       X: figurineState.X,
-      //       Y: figurineState.Y
-      //     });
-      //   }
-      // }}
     >
       <div
         style={{
