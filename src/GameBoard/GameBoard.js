@@ -1,10 +1,13 @@
 import { useState } from "react";
+import GameMap from "./GameMap";
 
 function GameBoard() {
   const [zoom, setZoom] = useState(2);
   const [isMovingMap, setIsMovingMap] = useState(false);
-  const [mapXOffset, setMapXOffset] = useState(0);
-  const [mapYOffset, setMapYOffset] = useState(0);
+  const [mapOffset, setMapOffset] = useState({ X: 0, Y: 0 });
+  const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
+  const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
+
   return (
     <div
       style={{
@@ -17,95 +20,48 @@ function GameBoard() {
         if (event.deltaY > 0) setZoom(zoom - 0.05);
         else setZoom(zoom + 0.05);
       }}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        setIsMovingMap(true);
+        setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+      }}
+      onMouseUp={(event) => {
+        event.preventDefault();
+        setIsMovingMap(false);
+        setEndMouseOffset({ X: mapOffset.X, Y: mapOffset.Y });
+      }}
+      onMouseMove={(event) => {
+        event.preventDefault();
+        if (isMovingMap) {
+          setMapOffset({
+            X: event.clientX - startMouseOffset.X + endMouseOffset.X,
+            Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
+          });
+        }
+      }}
+      onMouseLeave={(event) => {
+        event.preventDefault();
+        setIsMovingMap(false);
+        setEndMouseOffset({ X: mapOffset.X, Y: mapOffset.Y });
+      }}
     >
       <button
         style={{
-          position: "relative",
-          left: "35vw",
+          position: "absolute",
+          left: "50vw",
           top: "50vh"
         }}
         onClick={() => {
-          setMapXOffset(0);
-          setMapYOffset(0);
+          setMapOffset({
+            X: 0,
+            Y: 0
+          });
+          setEndMouseOffset({ X: 0, Y: 0 });
         }}
       >
         Reset map
       </button>
-      <div
-        style={{
-          width: `${44 * zoom}vh`,
-          height: `${60 * zoom}vh`,
-          backgroundColor: "black",
-          position: "relative",
-          left: `${mapYOffset}vw`,
-          top: `${mapXOffset}vh`
-        }}
-        onMouseDown={(event) => {
-          event.preventDefault();
-          setIsMovingMap(true);
-        }}
-        onMouseUp={(event) => {
-          event.preventDefault();
-          setIsMovingMap(false);
-        }}
-        onMouseMove={(event) => {
-          event.preventDefault();
-          if (isMovingMap) {
-            setMapXOffset(mapXOffset + event.movementY / 5);
-            setMapYOffset(mapYOffset + event.movementX / 5);
-          }
-        }}
-        onMouseLeave={() => setIsMovingMap(false)}
-      >
-        <div
-          style={{
-            width: `${0.984251969 * zoom}vh`,
-            height: `${0.984251969 * zoom}vh`,
-            borderRadius: "100%",
-            backgroundColor: "red",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative"
-          }}
-        ></div>
-        <div
-          style={{
-            width: `${1.1023622 * zoom}vh`,
-            height: `${1.1023622 * zoom}vh`,
-            borderRadius: "100%",
-            backgroundColor: "red",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative"
-          }}
-        ></div>
-        <div
-          style={{
-            width: `${1.25984252 * zoom}vh`,
-            height: `${1.25984252 * zoom}vh`,
-            borderRadius: "100%",
-            backgroundColor: "red",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative"
-          }}
-        ></div>
-        <div
-          style={{
-            width: `${1.57480315 * zoom}vh`,
-            height: `${1.57480315 * zoom}vh`,
-            borderRadius: "100%",
-            backgroundColor: "red",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "relative"
-          }}
-        ></div>
-      </div>
+      <GameMap zoom={zoom} mapOffset={mapOffset} />
     </div>
   );
 }
