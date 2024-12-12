@@ -8,8 +8,8 @@ function GameFigurine({ zoom, size, X, Y, isSelected, name }) {
   return (
     <div
       style={{
-        width: `${sizeDict.get(size) * zoom}vh`,
-        height: `${sizeDict.get(size) * zoom}vh`,
+        width: `${sizeDict.get(size) * 10 * zoom}px`,
+        height: `${sizeDict.get(size) * 10 * zoom}px`,
         borderRadius: "100%",
         backgroundColor: "red",
         display: "flex",

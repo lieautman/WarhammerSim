@@ -9,8 +9,8 @@ function GameMap({ zoom, mapOffset }) {
   return (
     <div
       style={{
-        width: `${44 * zoom}vh`,
-        height: `${70 * zoom}vh`,
+        width: `${440 * zoom}px`,
+        height: `${700 * zoom}px`,
         backgroundColor: "yellow",
         position: "relative",
         left: `${mapOffset.X}px`,
@@ -19,7 +19,7 @@ function GameMap({ zoom, mapOffset }) {
     >
       <div
         style={{
-          height: `${5 * zoom}vh`,
+          height: `${50 * zoom}px`,
           display: "flex"
         }}
       >
@@ -46,7 +46,7 @@ function GameMap({ zoom, mapOffset }) {
       ></div>
       <div
         style={{
-          height: `${5 * zoom}vh`,
+          height: `${50 * zoom}px`,
           display: "flex"
         }}
       ></div>
