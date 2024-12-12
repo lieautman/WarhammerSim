@@ -1,4 +1,4 @@
-function GameFigurine({ zoom, size, X, Y, isSelected, name }) {
+function GameModel({ zoom, size, X, Y, isSelected, name }) {
   const sizeDict = new Map([
     [25, 0.984251969],
     [28, 1.1023622],
@@ -25,4 +25,4 @@ function GameFigurine({ zoom, size, X, Y, isSelected, name }) {
   );
 }
 
-export default GameFigurine;
+export default GameModel;

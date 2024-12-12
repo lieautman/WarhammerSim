@@ -1,10 +1,10 @@
-import GameFigurine from "./GameFigurine";
+import GameModel from "./GameModel";
 import { useSelector } from "react-redux";
-import { selectArmy1, selectArmy2 } from "../GameState/GameStateSlice";
+import { selectArmy1 } from "../GameState/GameStateSlice"; //selectArmy2
 
 function GameMap({ zoom, mapOffset }) {
   const army1 = useSelector(selectArmy1);
-  const army2 = useSelector(selectArmy2);
+  //const army2 = useSelector(selectArmy2);
 
   return (
     <div
@@ -24,8 +24,8 @@ function GameMap({ zoom, mapOffset }) {
         }}
       >
         {army1.map((unit) =>
-          unit.map((model) => (
-            <GameFigurine
+          unit.models.map((model) => (
+            <GameModel
               zoom={zoom}
               size={model.baseSize}
               X={model.X}

@@ -2,22 +2,87 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   army1: [
-    [
-      { baseSize: 25, X: 0, Y: 0, isSelected: false, name: "Spore Mine" },
-      { baseSize: 25, X: 0, Y: 0, isSelected: false, name: "Spore Mine" },
-      { baseSize: 25, X: 0, Y: 0, isSelected: false, name: "Spore Mine" }
-    ],
-    [
-      { baseSize: 28, X: 0, Y: 0, isSelected: false, name: "Hormagaunt" },
-      { baseSize: 28, X: 0, Y: 0, isSelected: false, name: "Hormagaunt" },
-      { baseSize: 28, X: 0, Y: 0, isSelected: false, name: "Hormagaunt" }
-    ]
+    {
+      unitId: 1,
+      models: [
+        {
+          modelId: 1,
+          baseSize: 25,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Spore Mine"
+        },
+        {
+          modelId: 2,
+          baseSize: 25,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Spore Mine"
+        },
+        {
+          modelId: 3,
+          baseSize: 25,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Spore Mine"
+        }
+      ]
+    },
+    {
+      unitId: 2,
+      models: [
+        {
+          modelId: 4,
+          baseSize: 28,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Hormagaunt"
+        },
+        {
+          modelId: 5,
+          baseSize: 28,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Hormagaunt"
+        },
+        {
+          modelId: 6,
+          baseSize: 28,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Hormagaunt"
+        }
+      ]
+    }
   ],
   army2: [
-    [
-      { baseSize: 40, X: 0, Y: 0, isSelected: false, name: "Tyranid Warrior" },
-      { baseSize: 40, X: 0, Y: 0, isSelected: false, name: "Tyranid Warrior" }
-    ]
+    {
+      unitId: 3,
+      models: [
+        {
+          modelId: 7,
+          baseSize: 40,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Tyranid Warrior"
+        },
+        {
+          modelId: 8,
+          baseSize: 40,
+          X: 0,
+          Y: 0,
+          isSelected: false,
+          name: "Tyranid Warrior"
+        }
+      ]
+    }
   ]
 };
 
@@ -29,6 +94,18 @@ export const GameStateSlice = createSlice({
       return state;
     },
     addModelToUnit: (state, action) => {
+      return state;
+    },
+    removeModelFromUnit: (state, action) => {
+      return state;
+    },
+    removeUnitFromArmy: (state, action) => {
+      return state;
+    },
+    selectModel: (state, action) => {
+      return state;
+    },
+    selectUnit: (state, action) => {
       return state;
     }
   }
