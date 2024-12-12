@@ -1,12 +1,11 @@
 import GameFigurine from "./GameFigurine";
+import { useSelector } from "react-redux";
+import { selectArmy1, selectArmy2 } from "../GameState/GameStateSlice";
 
-function GameMap({
-  zoom,
-  mapOffset,
-  figurineState,
-  setFigurineStartMouseOffset,
-  setFigurineState
-}) {
+function GameMap({ zoom, mapOffset }) {
+  const army1 = useSelector(selectArmy1);
+  const army2 = useSelector(selectArmy2);
+
   return (
     <div
       style={{
@@ -24,19 +23,22 @@ function GameMap({
           display: "flex"
         }}
       >
-        <GameFigurine
-          zoom={zoom}
-          size={25}
-          figurineState={figurineState}
-          setFigurineStartMouseOffset={setFigurineStartMouseOffset}
-          setFigurineState={setFigurineState}
-        />
+        {army1.map((unit) =>
+          unit.map((model) => (
+            <GameFigurine
+              zoom={zoom}
+              size={model.baseSize}
+              X={model.X}
+              Y={model.Y}
+              isSelected={model.isSelected}
+            />
+          ))
+        )}
       </div>
-
       <div
         style={{
-          width: `${44 * zoom}vh`,
-          height: `${60 * zoom}vh`,
+          width: `${440 * zoom}px`,
+          height: `${600 * zoom}px`,
           backgroundColor: "black",
           position: "relative",
           zIndex: 0

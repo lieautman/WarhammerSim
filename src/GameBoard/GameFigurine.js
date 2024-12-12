@@ -1,10 +1,4 @@
-function GameFigurine({
-  zoom,
-  size,
-  setFigurineStartMouseOffset,
-  figurineState,
-  setFigurineState
-}) {
+function GameFigurine({ zoom, size, X, Y, isSelected, name }) {
   const sizeDict = new Map([
     [25, 0.984251969],
     [28, 1.1023622],
@@ -22,19 +16,10 @@ function GameFigurine({
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        left: `${figurineState.X}px`,
-        top: `${figurineState.Y}px`,
-        border: `${figurineState.isSelected ? "solid blue" : "none"}`,
+        left: `${X}px`,
+        top: `${Y}px`,
+        border: `${isSelected ? "1px solid blue" : "none"}`,
         zIndex: 100
-      }}
-      onClick={(event) => {
-        event.preventDefault();
-        setFigurineStartMouseOffset({ X: event.clientX, Y: event.clientY });
-        setFigurineState({
-          ...figurineState,
-          isSelected: !figurineState.isSelected
-        });
-        event.stopPropagation();
       }}
     ></div>
   );

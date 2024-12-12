@@ -93,13 +93,7 @@ function GameBoard() {
       >
         Reset map
       </button>
-      <GameMap
-        zoom={zoom}
-        mapOffset={mapOffset}
-        figurineState={figurineState}
-        setFigurineStartMouseOffset={setFigurineStartMouseOffset}
-        setFigurineState={setFigurineState}
-      />
+      <GameMap zoom={zoom} mapOffset={mapOffset} />
     </div>
   );
 }
