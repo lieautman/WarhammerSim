@@ -5,6 +5,7 @@ const initialState = {
     X: 0,
     Y: 0
   },
+  modelData: [],
   army1: [
     {
       unitId: 1,
@@ -106,6 +107,9 @@ export const GameStateSlice = createSlice({
         map: { ...state.map, X: 0, Y: 0 }
       };
     },
+    loadModelData: (state, action) => {
+      return { ...state, modelData: action.payload };
+    },
     addUnitToArmy: (state, action) => {
       return state;
     },
@@ -127,7 +131,7 @@ export const GameStateSlice = createSlice({
   }
 });
 
-export const { modifyMapCoordinates, resetMapCoordinates } =
+export const { modifyMapCoordinates, resetMapCoordinates, loadModelData } =
   GameStateSlice.actions;
 
 export const selectMap = (state) => state.map;

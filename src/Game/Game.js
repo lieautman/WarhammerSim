@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
 import GameBoard from "./GameBoard/GameBoard";
+import { loadModelData } from "./GameState/GameStateSlice";
 
 function Game() {
+  const dispatch = useDispatch();
+
   const parseCSVTextToJSON = function (text) {
     var lines = text.split("\n");
     var result = [];
@@ -18,14 +22,13 @@ function Game() {
       cont++;
       result.push(obj);
     }
-    console.log("ceva json", result);
+    dispatch(loadModelData(result));
   };
 
   const loadCSV = function () {
     fetch("./BaseSizeAndMovement.csv")
       .then((response) => response.text())
       .then((responseText) => {
-        console.log("ceva", responseText);
         parseCSVTextToJSON(responseText);
       });
   };
