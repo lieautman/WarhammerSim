@@ -15,7 +15,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Spore Mine"
+          name: "Spore Mines"
         },
         {
           modelId: 2,
@@ -23,7 +23,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Spore Mine"
+          name: "Spore Mines"
         },
         {
           modelId: 3,
@@ -31,7 +31,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Spore Mine"
+          name: "Spore Mines"
         }
       ]
     },
@@ -44,7 +44,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Hormagaunt"
+          name: "Hormagaunts"
         },
         {
           modelId: 5,
@@ -52,7 +52,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Hormagaunt"
+          name: "Hormagaunts"
         },
         {
           modelId: 6,
@@ -60,7 +60,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Hormagaunt"
+          name: "Hormagaunts"
         }
       ]
     }
@@ -75,7 +75,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Tyranid Warrior"
+          name: "Tyranid Warriors With Melee Bio-weapons"
         },
         {
           modelId: 8,
@@ -83,7 +83,7 @@ const initialState = {
           X: 0,
           Y: 0,
           isSelected: false,
-          name: "Tyranid Warrior"
+          name: "Tyranid Warrior With Ranged Bio-weapons"
         }
       ]
     }

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import GameBoard from "./GameBoard/GameBoard";
 
 function Game() {
@@ -8,6 +9,9 @@ function Game() {
         console.log("ceva", responseText);
       });
   };
+  useEffect(() => {
+    load();
+  }, []);
   return <GameBoard />;
 }
 

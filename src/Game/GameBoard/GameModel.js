@@ -1,4 +1,4 @@
-function GameModel({ modelId, zoom, size, X, Y, unitId, isSelected, name }) {
+function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
   const sizeDict = new Map([
     [25, 0.984251969],
     [28, 1.1023622],
@@ -7,7 +7,6 @@ function GameModel({ modelId, zoom, size, X, Y, unitId, isSelected, name }) {
   ]);
   return (
     <div
-      key={modelId}
       style={{
         width: `${sizeDict.get(size) * 10 * zoom}px`,
         height: `${sizeDict.get(size) * 10 * zoom}px`,
