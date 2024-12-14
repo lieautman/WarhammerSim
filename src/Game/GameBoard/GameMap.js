@@ -27,6 +27,7 @@ function GameMap({ zoom }) {
         {army1.map((unit) =>
           unit.models.map((model) => (
             <GameModel
+              modelId={model.modelId}
               zoom={zoom}
               size={model.baseSize}
               X={model.X}
