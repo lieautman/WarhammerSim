@@ -1,12 +1,20 @@
 import { useState } from "react";
 import GameMap from "./GameMap";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import {
+  modifyMapCoordinates,
+  resetMapCoordinates
+} from "../GameState/GameStateSlice";
+import { selectMap } from "../GameState/GameStateSlice";
 
 function GameBoard() {
-  const [zoom, setZoom] = useState(2);
+  const [zoom, setZoom] = useState(1);
   const [isMovingMap, setIsMovingMap] = useState(false);
-  const [mapOffset, setMapOffset] = useState({ X: 0, Y: 0 });
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
   const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
+  const dispatch = useDispatch();
+  const map = useSelector(selectMap);
 
   return (
     <div
@@ -28,21 +36,23 @@ function GameBoard() {
       onMouseUp={(event) => {
         event.preventDefault();
         setIsMovingMap(false);
-        setEndMouseOffset({ X: mapOffset.X, Y: mapOffset.Y });
+        setEndMouseOffset({ X: map.X, Y: map.Y });
       }}
       onMouseMove={(event) => {
         event.preventDefault();
         if (isMovingMap) {
-          setMapOffset({
-            X: event.clientX - startMouseOffset.X + endMouseOffset.X,
-            Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
-          });
+          dispatch(
+            modifyMapCoordinates({
+              X: event.clientX - startMouseOffset.X + endMouseOffset.X,
+              Y: event.clientY - startMouseOffset.Y + endMouseOffset.Y
+            })
+          );
         }
       }}
       onMouseLeave={(event) => {
         event.preventDefault();
         setIsMovingMap(false);
-        setEndMouseOffset({ X: mapOffset.X, Y: mapOffset.Y });
+        setEndMouseOffset({ X: map.X, Y: map.Y });
       }}
     >
       <button
@@ -52,16 +62,13 @@ function GameBoard() {
           top: "50vh"
         }}
         onClick={() => {
-          setMapOffset({
-            X: 0,
-            Y: 0
-          });
+          dispatch(resetMapCoordinates());
           setEndMouseOffset({ X: 0, Y: 0 });
         }}
       >
         Reset map
       </button>
-      <GameMap zoom={zoom} mapOffset={mapOffset} />
+      <GameMap zoom={zoom} />
     </div>
   );
 }

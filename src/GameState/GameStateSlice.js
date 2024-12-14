@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  board: {
+  map: {
     X: 0,
     Y: 0
   },
@@ -94,6 +94,18 @@ export const GameStateSlice = createSlice({
   name: "GameState",
   initialState,
   reducers: {
+    modifyMapCoordinates: (state, action) => {
+      return {
+        ...state,
+        map: { ...state.map, X: action.payload.X, Y: action.payload.Y }
+      };
+    },
+    resetMapCoordinates: (state) => {
+      return {
+        ...state,
+        map: { ...state.map, X: 0, Y: 0 }
+      };
+    },
     addUnitToArmy: (state, action) => {
       return state;
     },
@@ -115,8 +127,10 @@ export const GameStateSlice = createSlice({
   }
 });
 
-export const { addUnitToArmy, addModelToUnit } = GameStateSlice.actions;
+export const { modifyMapCoordinates, resetMapCoordinates } =
+  GameStateSlice.actions;
 
+export const selectMap = (state) => state.map;
 export const selectArmy1 = (state) => state.army1;
 export const selectArmy2 = (state) => state.army2;
 

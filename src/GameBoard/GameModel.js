@@ -15,9 +15,9 @@ function GameModel({ zoom, size, X, Y, isSelected, name }) {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        position: "relative",
-        left: `${X}px`,
-        top: `${Y}px`,
+        position: "absolute",
+        left: `${X * zoom}px`,
+        top: `${Y * zoom}px`,
         border: `${isSelected ? "1px solid blue" : "none"}`,
         zIndex: 100,
         transform: "translate(-50%, -50%)"

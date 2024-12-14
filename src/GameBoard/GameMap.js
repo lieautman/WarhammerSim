@@ -1,9 +1,10 @@
 import GameModel from "./GameModel";
 import { useSelector } from "react-redux";
-import { selectArmy1 } from "../GameState/GameStateSlice"; //selectArmy2
+import { selectMap, selectArmy1 } from "../GameState/GameStateSlice"; //selectArmy2
 
-function GameMap({ zoom, mapOffset }) {
+function GameMap({ zoom }) {
   const army1 = useSelector(selectArmy1);
+  const map = useSelector(selectMap);
   //const army2 = useSelector(selectArmy2);
 
   return (
@@ -13,9 +14,8 @@ function GameMap({ zoom, mapOffset }) {
         height: `${700 * zoom}px`,
         backgroundColor: "yellow",
         position: "relative",
-        left: `${mapOffset.X}px`,
-        top: `${mapOffset.Y}px`,
-        transform: "translate(-50%, -50%)"
+        left: `${map.X}px`,
+        top: `${map.Y}px`
       }}
     >
       <div
