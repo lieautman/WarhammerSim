@@ -31,7 +31,9 @@ function GameMap({ zoom }) {
               size={model.baseSize}
               X={model.X}
               Y={model.Y}
+              unitId={unit.unitId}
               isSelected={model.isSelected}
+              name={model.name}
             />
           ))
         )}

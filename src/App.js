@@ -1,12 +1,12 @@
 import LeftOptionsContainer from "./LeftOptions/LeftOptionsContainer";
-import GameBoard from "./GameBoard/GameBoard";
 import RightOptionsContainer from "./RightOptions/RightOptionsContainer";
+import Game from "./Game/Game";
 
 function App() {
   return (
     <div style={{ display: "flex" }}>
       <LeftOptionsContainer></LeftOptionsContainer>
-      <GameBoard></GameBoard>
+      <Game />
       <RightOptionsContainer></RightOptionsContainer>
     </div>
   );

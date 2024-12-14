@@ -1,4 +1,4 @@
-function GameModel({ zoom, size, X, Y, isSelected, name }) {
+function GameModel({ zoom, size, X, Y, unitId, isSelected, name }) {
   const sizeDict = new Map([
     [25, 0.984251969],
     [28, 1.1023622],
