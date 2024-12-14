@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  board: {
+    X: 0,
+    Y: 0
+  },
   army1: [
     {
       unitId: 1,

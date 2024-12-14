@@ -14,7 +14,8 @@ function GameMap({ zoom, mapOffset }) {
         backgroundColor: "yellow",
         position: "relative",
         left: `${mapOffset.X}px`,
-        top: `${mapOffset.Y}px`
+        top: `${mapOffset.Y}px`,
+        transform: "translate(-50%, -50%)"
       }}
     >
       <div

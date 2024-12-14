@@ -19,7 +19,8 @@ function GameModel({ zoom, size, X, Y, isSelected, name }) {
         left: `${X}px`,
         top: `${Y}px`,
         border: `${isSelected ? "1px solid blue" : "none"}`,
-        zIndex: 100
+        zIndex: 100,
+        transform: "translate(-50%, -50%)"
       }}
     ></div>
   );
