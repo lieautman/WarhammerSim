@@ -121,7 +121,7 @@ export const GameStateSlice = createSlice({
       return state;
     },
     selectModel: (state, action) => {
-      return state;
+      return { ...state };
     },
     selectUnit: (state, action) => {
       return state;

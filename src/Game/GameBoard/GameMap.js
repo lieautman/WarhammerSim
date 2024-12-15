@@ -29,10 +29,10 @@ function GameMap({ zoom }) {
             <GameModel
               key={model.modelId}
               modelId={model.modelId}
+              unitId={unit.unitId}
               zoom={zoom}
               X={model.X}
               Y={model.Y}
-              unitId={unit.unitId}
               isSelected={model.isSelected}
               name={model.name}
             />
