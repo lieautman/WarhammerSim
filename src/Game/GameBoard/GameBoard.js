@@ -28,16 +28,19 @@ function GameBoard() {
       onWheel={(event) => {
         if (event.deltaY > 0) setZoom(zoom - 0.05);
         else setZoom(zoom + 0.05);
+        event.stopPropagation();
       }}
       onMouseDown={(event) => {
         event.preventDefault();
         setIsMovingMap(true);
         setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+        event.stopPropagation();
       }}
       onMouseUp={(event) => {
         event.preventDefault();
         setIsMovingMap(false);
         setEndMouseOffset({ X: map.X, Y: map.Y });
+        event.stopPropagation();
       }}
       onMouseMove={(event) => {
         event.preventDefault();
@@ -49,11 +52,13 @@ function GameBoard() {
             })
           );
         }
+        event.stopPropagation();
       }}
       onMouseLeave={(event) => {
         event.preventDefault();
         setIsMovingMap(false);
         setEndMouseOffset({ X: map.X, Y: map.Y });
+        event.stopPropagation();
       }}
     >
       <button

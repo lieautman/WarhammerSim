@@ -217,7 +217,8 @@ export const {
   resetMapCoordinates,
   loadModelData,
   selectModel,
-  selectUnit
+  selectUnit,
+  moveSelectedModels
 } = GameStateSlice.actions;
 
 export const selectMap = (state) => state.map;
