@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
 import { selectModelData } from "../GameState/GameStateSlice";
 
-function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
+function GameModel({ modelId, unitId, zoom, X, Y, isSelected, name }) {
   //for each model, look in the modelData and retrive info based on the name
   const modelData = useSelector(selectModelData).find(
     (data) => data.name === name
   );
-
   const sizeDict = new Map([
     [25, 0.98425196],
     [28, 1.10236219],
@@ -25,8 +24,24 @@ function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
   return (
     <div
       style={{
-        width: `${sizeDict.get(size) * 10 * zoom}px`,
-        height: `${sizeDict.get(size) * 10 * zoom}px`,
+        width: `${
+          sizeDict.get(
+            parseInt(
+              modelData?.base_size.substring(0, modelData?.base_size.length - 2)
+            )
+          ) *
+          10 *
+          zoom
+        }px`,
+        height: `${
+          sizeDict.get(
+            parseInt(
+              modelData?.base_size.substring(0, modelData?.base_size.length - 2)
+            )
+          ) *
+          10 *
+          zoom
+        }px`,
         borderRadius: "100%",
         backgroundColor: "red",
         display: "flex",

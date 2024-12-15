@@ -24,13 +24,12 @@ function GameMap({ zoom }) {
           display: "flex"
         }}
       >
-        {army1.map((unit) =>
+        {army1.units.map((unit) =>
           unit.models.map((model) => (
             <GameModel
               key={model.modelId}
               modelId={model.modelId}
               zoom={zoom}
-              size={model.baseSize}
               X={model.X}
               Y={model.Y}
               unitId={unit.unitId}

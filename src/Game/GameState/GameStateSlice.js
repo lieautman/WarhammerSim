@@ -6,89 +6,87 @@ const initialState = {
     Y: 0
   },
   modelData: [],
-  army1: [
-    {
-      unitId: 1,
-      models: [
-        {
-          modelId: 1,
-          baseSize: 25,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Spore Mines"
-        },
-        {
-          modelId: 2,
-          baseSize: 25,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Spore Mines"
-        },
-        {
-          modelId: 3,
-          baseSize: 25,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Spore Mines"
-        }
-      ]
-    },
-    {
-      unitId: 2,
-      models: [
-        {
-          modelId: 4,
-          baseSize: 28,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Hormagaunts"
-        },
-        {
-          modelId: 5,
-          baseSize: 28,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Hormagaunts"
-        },
-        {
-          modelId: 6,
-          baseSize: 28,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Hormagaunts"
-        }
-      ]
-    }
-  ],
-  army2: [
-    {
-      unitId: 3,
-      models: [
-        {
-          modelId: 7,
-          baseSize: 40,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Tyranid Warriors With Melee Bio-weapons"
-        },
-        {
-          modelId: 8,
-          baseSize: 40,
-          X: 0,
-          Y: 0,
-          isSelected: false,
-          name: "Tyranid Warrior With Ranged Bio-weapons"
-        }
-      ]
-    }
-  ]
+  army1: {
+    armyId: 0,
+    units: [
+      {
+        unitId: 0,
+        models: [
+          {
+            modelId: 1,
+            X: 10,
+            Y: 10,
+            isSelected: false,
+            name: "Spore Mines"
+          },
+          {
+            modelId: 2,
+            X: 20,
+            Y: 10,
+            isSelected: false,
+            name: "Spore Mines"
+          },
+          {
+            modelId: 3,
+            X: 30,
+            Y: 10,
+            isSelected: false,
+            name: "Spore Mines"
+          }
+        ]
+      },
+      {
+        unitId: 1,
+        models: [
+          {
+            modelId: 4,
+            X: 40,
+            Y: 10,
+            isSelected: false,
+            name: "Hormagaunts"
+          },
+          {
+            modelId: 5,
+            X: 50,
+            Y: 10,
+            isSelected: false,
+            name: "Hormagaunts"
+          },
+          {
+            modelId: 6,
+            X: 60,
+            Y: 10,
+            isSelected: false,
+            name: "Hormagaunts"
+          }
+        ]
+      }
+    ]
+  },
+  army2: {
+    armyId: 1,
+    units: [
+      {
+        unitId: 0,
+        models: [
+          {
+            modelId: 7,
+            X: 0,
+            Y: 0,
+            isSelected: false,
+            name: "Tyranid Warriors With Melee Bio-weapons"
+          },
+          {
+            modelId: 8,
+            X: 0,
+            Y: 0,
+            isSelected: false,
+            name: "Tyranid Warrior With Ranged Bio-weapons"
+          }
+        ]
+      }
+    ]
+  }
 };
 
 export const GameStateSlice = createSlice({

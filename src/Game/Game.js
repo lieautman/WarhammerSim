@@ -14,7 +14,7 @@ function Game() {
         .then((json) => dispatch(loadModelData(json)));
       setDataLoaded(true);
     }
-  }, [dispatch]);
+  }, [dispatch, dataLoaded]);
 
   return <GameBoard />;
 }
