@@ -5,6 +5,10 @@ const initialState = {
     X: 0,
     Y: 0
   },
+  lastSelectedModelCoords: {
+    X: 0,
+    Y: 0
+  },
   modelData: [],
   armys: [
     {
@@ -124,7 +128,8 @@ export const GameStateSlice = createSlice({
     },
     selectModel: (state, action) => {
       const { armyId, unitId, modelId } = action.payload;
-      return {
+      let modelX, modelY;
+      let returnObj = {
         ...state,
         armys: state.armys.map((army) => {
           // Find the target army
@@ -137,6 +142,8 @@ export const GameStateSlice = createSlice({
                   return {
                     ...unit,
                     models: unit.models.map((model) => {
+                      modelX = model.X;
+                      modelY = model.Y;
                       // Find the target model and toggle its isSelected property
                       if (model.modelId === modelId) {
                         return {
@@ -155,10 +162,20 @@ export const GameStateSlice = createSlice({
           return army;
         })
       };
+      returnObj = {
+        ...returnObj,
+        lastSelectedModelCoords: {
+          ...state.lastSelectedModelCoords,
+          X: modelX,
+          Y: modelY
+        }
+      };
+      return returnObj;
     },
     selectUnit: (state, action) => {
       const { armyId, unitId } = action.payload;
-      return {
+      let modelX, modelY;
+      let returnObj = {
         ...state,
         armys: state.armys.map((army) => {
           // Find the target army
@@ -170,10 +187,14 @@ export const GameStateSlice = createSlice({
                 if (unit.unitId === unitId) {
                   return {
                     ...unit,
-                    models: unit.models.map((model) => ({
-                      ...model,
-                      isSelected: !model.isSelected // Toggle isSelected for all models in the unit
-                    }))
+                    models: unit.models.map((model) => {
+                      modelX = model.X;
+                      modelY = model.Y;
+                      return {
+                        ...model,
+                        isSelected: !model.isSelected // Toggle isSelected for all models in the unit
+                      };
+                    })
                   };
                 }
                 return unit;
@@ -183,6 +204,15 @@ export const GameStateSlice = createSlice({
           return army;
         })
       };
+      returnObj = {
+        ...returnObj,
+        lastSelectedModelCoords: {
+          ...state.lastSelectedModelCoords,
+          X: modelX,
+          Y: modelY
+        }
+      };
+      return returnObj;
     },
     moveSelectedModels: (state, action) => {
       const { X, Y } = action.payload;
@@ -222,6 +252,8 @@ export const {
 } = GameStateSlice.actions;
 
 export const selectMap = (state) => state.map;
+export const selectLastSelectedModelCoords = (state) =>
+  state.lastSelectedModelCoords;
 export const selectModelData = (state) => state.modelData;
 export const selectArmys = (state) => state.armys;
 

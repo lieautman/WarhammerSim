@@ -62,7 +62,6 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
         event.preventDefault();
         if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
         else dispatch(selectModel({ armyId, unitId, modelId }));
-        event.stopPropagation();
       }}
     />
   );

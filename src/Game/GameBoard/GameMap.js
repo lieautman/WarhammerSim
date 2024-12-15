@@ -1,27 +1,76 @@
 import GameModel from "./GameModel";
-import { useSelector } from "react-redux";
-import { selectMap, selectArmys } from "../GameState/GameStateSlice";
-
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectMap,
+  selectArmys,
+  selectLastSelectedModelCoords
+} from "../GameState/GameStateSlice";
+import { moveSelectedModels } from "../GameState/GameStateSlice";
+import { useState } from "react";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);
   const map = useSelector(selectMap);
+  const lastSelectedModelCoords = useSelector(selectLastSelectedModelCoords);
+
   //model movement
+  const [isMovingModels, setIsMovingModels] = useState(false);
+  const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
+  const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
+  const dispatch = useDispatch();
 
   return (
     <div
       style={{
         width: `${440 * zoom}px`,
         height: `${700 * zoom}px`,
-        backgroundColor: "yellow",
+        backgroundColor: "blue",
         position: "relative",
         left: `${map.X}px`,
         top: `${map.Y}px`
+      }}
+      onMouseDown={(event) => {
+        event.preventDefault();
+        setIsMovingModels(true);
+        setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+      }}
+      onMouseUp={(event) => {
+        event.preventDefault();
+        setIsMovingModels(false);
+        setEndMouseOffset({ X: map.X, Y: map.Y });
+      }}
+      onMouseMove={(event) => {
+        if (event.ctrlKey && isMovingModels) {
+          event.preventDefault();
+
+          dispatch(
+            moveSelectedModels({
+              X:
+                event.clientX -
+                startMouseOffset.X +
+                lastSelectedModelCoords.X +
+                endMouseOffset.X,
+              Y:
+                event.clientY -
+                startMouseOffset.Y +
+                lastSelectedModelCoords.Y +
+                endMouseOffset.Y
+            })
+          );
+          event.stopPropagation();
+        }
+      }}
+      onMouseLeave={(event) => {
+        event.preventDefault();
+        setIsMovingModels(false);
+        setEndMouseOffset({ X: map.X, Y: map.Y });
+        event.stopPropagation();
       }}
     >
       <div
         style={{
           height: `${50 * zoom}px`,
-          display: "flex"
+          display: "flex",
+          backgroundColor: "yellow"
         }}
       >
         {armys[0].units.map((unit) =>
@@ -52,7 +101,8 @@ function GameMap({ zoom }) {
       <div
         style={{
           height: `${50 * zoom}px`,
-          display: "flex"
+          display: "flex",
+          backgroundColor: "yellow"
         }}
       >
         {armys[1].units.map((unit) =>
