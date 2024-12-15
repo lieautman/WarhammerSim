@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { selectModelData } from "../GameState/GameStateSlice";
-import { useEffect } from "react";
 
 function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
+  //for each model, look in the modelData and retrive info based on the name
   const modelData = useSelector(selectModelData).find(
     (data) => data.name === name
   );
@@ -21,8 +21,6 @@ function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
     [130, 5.11811023],
     [160, 6.29921259]
   ]);
-
-  //for each model, look in the modelData and retrive info based on the name
 
   return (
     <div
