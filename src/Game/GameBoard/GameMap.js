@@ -29,6 +29,7 @@ function GameMap({ zoom }) {
               key={model.modelId}
               modelId={model.modelId}
               unitId={unit.unitId}
+              armyId={armys[0].armyId}
               zoom={zoom}
               X={model.X}
               Y={model.Y}
@@ -59,6 +60,7 @@ function GameMap({ zoom }) {
               key={model.modelId}
               modelId={model.modelId}
               unitId={unit.unitId}
+              armyId={armys[1].armyId}
               zoom={zoom}
               X={model.X}
               Y={model.Y}
