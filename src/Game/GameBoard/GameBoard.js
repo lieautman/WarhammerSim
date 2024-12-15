@@ -10,6 +10,7 @@ import { selectMap } from "../GameState/GameStateSlice";
 
 function GameBoard() {
   const [zoom, setZoom] = useState(1);
+  //map coordinates for click movement
   const [isMovingMap, setIsMovingMap] = useState(false);
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
   const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });

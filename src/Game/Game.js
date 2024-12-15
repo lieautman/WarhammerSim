@@ -5,6 +5,7 @@ import { loadModelData } from "./GameState/GameStateSlice";
 function Game() {
   const dispatch = useDispatch();
 
+  //loadModelData
   const parseCSVTextToJSON = function (text) {
     var lines = text.split("\n");
     var result = [];

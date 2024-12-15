@@ -135,6 +135,7 @@ export const { modifyMapCoordinates, resetMapCoordinates, loadModelData } =
   GameStateSlice.actions;
 
 export const selectMap = (state) => state.map;
+export const selectModelData = (state) => state.modelData;
 export const selectArmy1 = (state) => state.army1;
 export const selectArmy2 = (state) => state.army2;
 
