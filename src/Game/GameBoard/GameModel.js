@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { selectModelData } from "../GameState/GameStateSlice";
+import { useEffect } from "react";
 
 function GameModel({ modelId, unitId, zoom, size, X, Y, isSelected, name }) {
-  const modelData = useSelector(selectModelData);
-  console.log("ceva", modelData);
+  const modelData = useSelector(selectModelData).find(
+    (data) => data.name === name
+  );
+
   const sizeDict = new Map([
     [25, 0.98425196],
     [28, 1.10236219],
