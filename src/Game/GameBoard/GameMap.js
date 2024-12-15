@@ -5,6 +5,7 @@ import { selectMap, selectArmys } from "../GameState/GameStateSlice";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);
   const map = useSelector(selectMap);
+  //model movement
 
   return (
     <div

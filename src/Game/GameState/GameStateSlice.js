@@ -183,6 +183,31 @@ export const GameStateSlice = createSlice({
           return army;
         })
       };
+    },
+    moveSelectedModels: (state, action) => {
+      const { X, Y } = action.payload;
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          return {
+            ...army,
+            units: army.units.map((unit) => {
+              return {
+                ...unit,
+                models: unit.models.map((model) => {
+                  if (model.isSelected)
+                    return {
+                      ...model,
+                      X: X,
+                      Y: Y
+                    };
+                  return model;
+                })
+              };
+            })
+          };
+        })
+      };
     }
   }
 });
