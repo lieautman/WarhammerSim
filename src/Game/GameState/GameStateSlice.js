@@ -123,10 +123,66 @@ export const GameStateSlice = createSlice({
       return state;
     },
     selectModel: (state, action) => {
-      return { ...state };
+      const { armyId, unitId, modelId } = action.payload;
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          // Find the target army
+          if (army.armyId === armyId) {
+            return {
+              ...army,
+              units: army.units.map((unit) => {
+                // Find the target unit
+                if (unit.unitId === unitId) {
+                  return {
+                    ...unit,
+                    models: unit.models.map((model) => {
+                      // Find the target model and toggle its isSelected property
+                      if (model.modelId === modelId) {
+                        return {
+                          ...model,
+                          isSelected: !model.isSelected
+                        };
+                      }
+                      return model;
+                    })
+                  };
+                }
+                return unit;
+              })
+            };
+          }
+          return army;
+        })
+      };
     },
     selectUnit: (state, action) => {
-      return state;
+      const { armyId, unitId } = action.payload;
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          // Find the target army
+          if (army.armyId === armyId) {
+            return {
+              ...army,
+              units: army.units.map((unit) => {
+                // Find the target unit
+                if (unit.unitId === unitId) {
+                  return {
+                    ...unit,
+                    models: unit.models.map((model) => ({
+                      ...model,
+                      isSelected: !model.isSelected // Toggle isSelected for all models in the unit
+                    }))
+                  };
+                }
+                return unit;
+              })
+            };
+          }
+          return army;
+        })
+      };
     }
   }
 });

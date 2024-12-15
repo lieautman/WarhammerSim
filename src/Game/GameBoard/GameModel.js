@@ -59,12 +59,8 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
       }}
       onClick={(event) => {
         event.preventDefault();
-        dispatch(selectModel({ armyId, unitId, modelId }));
-        event.stopPropagation();
-      }}
-      onDoubleClick={(event) => {
-        event.preventDefault();
-        dispatch(selectUnit({ armyId, unitId, modelId }));
+        if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
+        else dispatch(selectModel({ armyId, unitId, modelId }));
         event.stopPropagation();
       }}
     />
