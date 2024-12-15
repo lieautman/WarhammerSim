@@ -46,14 +46,15 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
           zoom
         }px`,
         borderRadius: "100%",
-        backgroundColor: "red",
+        backgroundColor: `${
+          isSelected ? "rgb(208, 132, 94)" : "rgb(211, 39, 0)"
+        }`,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
         left: `${X * zoom}px`,
         top: `${Y * zoom}px`,
-        border: `${isSelected ? "1px solid blue" : "none"}`,
         zIndex: 100,
         transform: "translate(-50%, -50%)"
       }}
