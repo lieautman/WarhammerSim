@@ -6,87 +6,89 @@ const initialState = {
     Y: 0
   },
   modelData: [],
-  army1: {
-    armyId: 0,
-    units: [
-      {
-        unitId: 0,
-        models: [
-          {
-            modelId: 1,
-            X: 10,
-            Y: 10,
-            isSelected: false,
-            name: "Spore Mines"
-          },
-          {
-            modelId: 2,
-            X: 20,
-            Y: 10,
-            isSelected: false,
-            name: "Spore Mines"
-          },
-          {
-            modelId: 3,
-            X: 30,
-            Y: 10,
-            isSelected: false,
-            name: "Spore Mines"
-          }
-        ]
-      },
-      {
-        unitId: 1,
-        models: [
-          {
-            modelId: 4,
-            X: 40,
-            Y: 10,
-            isSelected: false,
-            name: "Hormagaunts"
-          },
-          {
-            modelId: 5,
-            X: 50,
-            Y: 10,
-            isSelected: false,
-            name: "Hormagaunts"
-          },
-          {
-            modelId: 6,
-            X: 60,
-            Y: 10,
-            isSelected: false,
-            name: "Hormagaunts"
-          }
-        ]
-      }
-    ]
-  },
-  army2: {
-    armyId: 1,
-    units: [
-      {
-        unitId: 0,
-        models: [
-          {
-            modelId: 7,
-            X: 0,
-            Y: 0,
-            isSelected: false,
-            name: "Tyranid Warriors With Melee Bio-weapons"
-          },
-          {
-            modelId: 8,
-            X: 0,
-            Y: 0,
-            isSelected: false,
-            name: "Tyranid Warrior With Ranged Bio-weapons"
-          }
-        ]
-      }
-    ]
-  }
+  armys: [
+    {
+      armyId: 0,
+      units: [
+        {
+          unitId: 0,
+          models: [
+            {
+              modelId: 1,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Spore Mines"
+            },
+            {
+              modelId: 2,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Spore Mines"
+            },
+            {
+              modelId: 3,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Spore Mines"
+            }
+          ]
+        },
+        {
+          unitId: 1,
+          models: [
+            {
+              modelId: 4,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Hormagaunts"
+            },
+            {
+              modelId: 5,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Hormagaunts"
+            },
+            {
+              modelId: 6,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Hormagaunts"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      armyId: 1,
+      units: [
+        {
+          unitId: 0,
+          models: [
+            {
+              modelId: 7,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Tyranid Warriors With Melee Bio-weapons"
+            },
+            {
+              modelId: 8,
+              X: 10,
+              Y: 10,
+              isSelected: false,
+              name: "Tyranid Warriors With Ranged Bio-weapons"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 };
 
 export const GameStateSlice = createSlice({
@@ -134,7 +136,6 @@ export const { modifyMapCoordinates, resetMapCoordinates, loadModelData } =
 
 export const selectMap = (state) => state.map;
 export const selectModelData = (state) => state.modelData;
-export const selectArmy1 = (state) => state.army1;
-export const selectArmy2 = (state) => state.army2;
+export const selectArmys = (state) => state.armys;
 
 export default GameStateSlice.reducer;

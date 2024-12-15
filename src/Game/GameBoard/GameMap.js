@@ -1,11 +1,10 @@
 import GameModel from "./GameModel";
 import { useSelector } from "react-redux";
-import { selectMap, selectArmy1 } from "../GameState/GameStateSlice"; //selectArmy2
+import { selectMap, selectArmys } from "../GameState/GameStateSlice";
 
 function GameMap({ zoom }) {
-  const army1 = useSelector(selectArmy1);
+  const armys = useSelector(selectArmys);
   const map = useSelector(selectMap);
-  //const army2 = useSelector(selectArmy2);
 
   return (
     <div
@@ -24,7 +23,7 @@ function GameMap({ zoom }) {
           display: "flex"
         }}
       >
-        {army1.units.map((unit) =>
+        {armys[0].units.map((unit) =>
           unit.models.map((model) => (
             <GameModel
               key={model.modelId}
@@ -53,7 +52,22 @@ function GameMap({ zoom }) {
           height: `${50 * zoom}px`,
           display: "flex"
         }}
-      ></div>
+      >
+        {armys[1].units.map((unit) =>
+          unit.models.map((model) => (
+            <GameModel
+              key={model.modelId}
+              modelId={model.modelId}
+              unitId={unit.unitId}
+              zoom={zoom}
+              X={model.X}
+              Y={model.Y}
+              isSelected={model.isSelected}
+              name={model.name}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }
