@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { selectModelData } from "../GameState/GameStateSlice";
+import { selectModelData } from "../../GameState/GameStateSlice";
 import { useDispatch } from "react-redux";
-import { selectModel, selectUnit } from "../GameState/GameStateSlice";
+import { selectModel, selectUnit } from "../../GameState/GameStateSlice";
 
 function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
   const dispatch = useDispatch();
@@ -49,9 +49,6 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
         backgroundColor: `${
           isSelected ? "rgb(208, 132, 94)" : "rgb(211, 39, 0)"
         }`,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         position: "relative",
         left: `${X * zoom}px`,
         top: `${Y * zoom}px`,

@@ -1,7 +1,9 @@
-import GameModel from "./GameModel";
+import GameModel from "./Figurines/GameModel";
+import GameBuilding from "./Figurines/GameBuilding";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectMap,
+  selectBuildings,
   selectArmys,
   selectLastSelectedModelCoords
 } from "../GameState/GameStateSlice";
@@ -9,6 +11,7 @@ import { moveSelectedModels } from "../GameState/GameStateSlice";
 import { useState } from "react";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);
+  const buildings = useSelector(selectBuildings);
   const map = useSelector(selectMap);
   const lastSelectedModelCoords = useSelector(selectLastSelectedModelCoords);
 
@@ -33,8 +36,6 @@ function GameMap({ zoom }) {
       }}
       onMouseMove={(event) => {
         if (event.ctrlKey && isMovingModels) {
-          console.log("ceva client-start", event.clientX - startMouseOffset.X);
-          console.log("ceva last", lastSelectedModelCoords.X);
           event.preventDefault();
           dispatch(
             moveSelectedModels({
@@ -81,7 +82,18 @@ function GameMap({ zoom }) {
           position: "relative",
           zIndex: 0
         }}
-      ></div>
+      >
+        {buildings.map((building) => (
+          <GameBuilding
+            XSize={building.XSize}
+            YSize={building.YSize}
+            zoom={zoom}
+            X={building.X}
+            Y={building.Y}
+            isRuin={building.isRuin}
+          />
+        ))}
+      </div>
       <div
         style={{
           height: `${50 * zoom}px`,

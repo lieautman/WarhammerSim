@@ -5,6 +5,10 @@ const initialState = {
     X: 0,
     Y: 0
   },
+  buildings: [
+    { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
+    { buildingId: 2, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: true }
+  ],
   lastSelectedModelCoords: {
     X: 0,
     Y: 0
@@ -114,6 +118,7 @@ export const GameStateSlice = createSlice({
     loadModelData: (state, action) => {
       return { ...state, modelData: action.payload };
     },
+
     addUnitToArmy: (state, action) => {
       return state;
     },
@@ -252,6 +257,7 @@ export const {
 } = GameStateSlice.actions;
 
 export const selectMap = (state) => state.map;
+export const selectBuildings = (state) => state.buildings;
 export const selectLastSelectedModelCoords = (state) =>
   state.lastSelectedModelCoords;
 export const selectModelData = (state) => state.modelData;
