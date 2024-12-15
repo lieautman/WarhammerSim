@@ -142,10 +142,10 @@ export const GameStateSlice = createSlice({
                   return {
                     ...unit,
                     models: unit.models.map((model) => {
-                      modelX = model.X;
-                      modelY = model.Y;
                       // Find the target model and toggle its isSelected property
                       if (model.modelId === modelId) {
+                        modelX = model.X;
+                        modelY = model.Y;
                         return {
                           ...model,
                           isSelected: !model.isSelected

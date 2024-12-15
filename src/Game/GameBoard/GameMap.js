@@ -15,7 +15,6 @@ function GameMap({ zoom }) {
   //model movement
   const [isMovingModels, setIsMovingModels] = useState(false);
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
-  const [endMouseOffset, setEndMouseOffset] = useState({ X: 0, Y: 0 });
   const dispatch = useDispatch();
 
   return (
@@ -29,41 +28,26 @@ function GameMap({ zoom }) {
         top: `${map.Y}px`
       }}
       onMouseDown={(event) => {
-        event.preventDefault();
         setIsMovingModels(true);
         setStartMouseOffset({ X: event.clientX, Y: event.clientY });
       }}
-      onMouseUp={(event) => {
-        event.preventDefault();
-        setIsMovingModels(false);
-        setEndMouseOffset({ X: map.X, Y: map.Y });
-      }}
       onMouseMove={(event) => {
         if (event.ctrlKey && isMovingModels) {
+          console.log("ceva client-start", event.clientX - startMouseOffset.X);
+          console.log("ceva last", lastSelectedModelCoords.X);
           event.preventDefault();
-
           dispatch(
             moveSelectedModels({
               X:
-                event.clientX -
-                startMouseOffset.X +
-                lastSelectedModelCoords.X +
-                endMouseOffset.X,
+                (event.clientX - startMouseOffset.X) / zoom +
+                lastSelectedModelCoords.X,
               Y:
-                event.clientY -
-                startMouseOffset.Y +
-                lastSelectedModelCoords.Y +
-                endMouseOffset.Y
+                (event.clientY - startMouseOffset.Y) / zoom +
+                lastSelectedModelCoords.Y
             })
           );
           event.stopPropagation();
         }
-      }}
-      onMouseLeave={(event) => {
-        event.preventDefault();
-        setIsMovingModels(false);
-        setEndMouseOffset({ X: map.X, Y: map.Y });
-        event.stopPropagation();
       }}
     >
       <div
