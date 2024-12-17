@@ -85,6 +85,7 @@ function GameMap({ zoom }) {
       >
         {buildings.map((building) => (
           <GameBuilding
+            key={building.buildingId}
             XSize={building.XSize}
             YSize={building.YSize}
             zoom={zoom}

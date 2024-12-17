@@ -7,7 +7,7 @@ const initialState = {
   },
   buildings: [
     { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
-    { buildingId: 2, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: true }
+    { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: true }
   ],
   lastSelectedModelCoords: {
     X: 0,
