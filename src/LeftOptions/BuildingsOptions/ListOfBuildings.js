@@ -15,6 +15,18 @@ function ListOfBuildings() {
         <Grid2 size={2}>Y</Grid2>
         <Grid2 size={2}>Ruin</Grid2>
       </Grid2>
+      {listOfBuildings.map((building) => {
+        return (
+          <Grid2 container spacing={1}>
+            <Grid2 size={2}>{building.buildingId}</Grid2>
+            <Grid2 size={2}>{building.XSize}</Grid2>
+            <Grid2 size={2}>{building.YSize}</Grid2>
+            <Grid2 size={2}>{building.X}</Grid2>
+            <Grid2 size={2}>{building.Y}</Grid2>
+            <Grid2 size={2}>{building.isRuin}</Grid2>
+          </Grid2>
+        );
+      })}
     </div>
   );
 }
