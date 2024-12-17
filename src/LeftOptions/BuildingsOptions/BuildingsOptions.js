@@ -10,8 +10,12 @@ import {
   Checkbox
 } from "@mui/material";
 import ListOfBuildings from "./ListOfBuildings";
+import { useDispatch } from "react-redux";
+import { addBuilding } from "../../Game/GameState/GameStateSlice";
 
 function BuildingSOptions() {
+  const dispatch = useDispatch();
+
   return (
     <Accordion>
       <AccordionSummary
@@ -63,7 +67,22 @@ function BuildingSOptions() {
             />
           </Grid2>
           <Grid2 size={12}>
-            <Button variant="contained" fullWidth>
+            <Button
+              variant="contained"
+              fullWidth
+              onClick={() => {
+                dispatch(
+                  addBuilding({
+                    buildingId: 1,
+                    XSize: 40,
+                    YSize: 30,
+                    X: 50,
+                    Y: 20,
+                    isRuin: false
+                  })
+                );
+              }}
+            >
               Add
             </Button>
           </Grid2>

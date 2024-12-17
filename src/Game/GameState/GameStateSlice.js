@@ -115,10 +115,22 @@ export const GameStateSlice = createSlice({
         map: { ...state.map, X: 0, Y: 0 }
       };
     },
+    addBuilding: (state, action) => {
+      let buildings = [...state.buildings];
+      buildings.push(action.payload);
+      return {
+        ...state,
+        buildings: buildings
+      };
+    },
+    removeBuilding: (state, action) => {
+      return {
+        ...state
+      };
+    },
     loadModelData: (state, action) => {
       return { ...state, modelData: action.payload };
     },
-
     addUnitToArmy: (state, action) => {
       return state;
     },
@@ -250,6 +262,7 @@ export const GameStateSlice = createSlice({
 export const {
   modifyMapCoordinates,
   resetMapCoordinates,
+  addBuilding,
   loadModelData,
   selectModel,
   selectUnit,
