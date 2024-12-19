@@ -20,7 +20,7 @@ function GameBoard() {
   return (
     <div
       style={{
-        width: "70vw",
+        width: "65vw",
         height: "100vh",
         backgroundColor: "green",
         overflow: "hidden"

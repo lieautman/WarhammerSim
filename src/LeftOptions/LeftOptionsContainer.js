@@ -4,7 +4,7 @@ function LeftOptionsContainer() {
   return (
     <div
       style={{
-        width: "15vw",
+        width: "20vw",
         height: "100vh",
         backgroundColor: "rgb(190, 190, 190)",
         display: "flex",
