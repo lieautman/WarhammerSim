@@ -12,10 +12,15 @@ import {
 import ListOfBuildings from "./ListOfBuildings";
 import { useDispatch } from "react-redux";
 import { addBuilding } from "../../Game/GameState/GameStateSlice";
+import { useState } from "react";
 
 function BuildingSOptions() {
   const dispatch = useDispatch();
-
+  const [buildingHeight, setBuildingHeight] = useState(10);
+  const [buildingWidth, setBuildingWidth] = useState(10);
+  const [buildingX, setBuildingX] = useState(50);
+  const [buildingY, setBuildingY] = useState(50);
+  const [buildingIsRuin, setBuildingIsRuin] = useState(false);
   return (
     <Accordion>
       <AccordionSummary
@@ -30,7 +35,14 @@ function BuildingSOptions() {
           <Grid2 size={6}>Add new building</Grid2>
           <Grid2 size={6}>
             <FormControlLabel
-              control={<Checkbox checked={false} onChange={() => {}} />}
+              control={
+                <Checkbox
+                  checked={buildingIsRuin}
+                  onChange={() => {
+                    setBuildingIsRuin(!buildingIsRuin);
+                  }}
+                />
+              }
               label={"Ruin"}
             />
           </Grid2>
@@ -39,6 +51,7 @@ function BuildingSOptions() {
               label={"Height"}
               type={"number"}
               defaultValue={1}
+              onChange={(event) => setBuildingHeight(event.target.value * 10)}
               InputLabelProps={{ shrink: true }}
             />
           </Grid2>
@@ -47,6 +60,7 @@ function BuildingSOptions() {
               label={"Width"}
               type={"number"}
               defaultValue={1}
+              onChange={(event) => setBuildingWidth(event.target.value * 10)}
               InputLabelProps={{ shrink: true }}
             />
           </Grid2>
@@ -55,6 +69,7 @@ function BuildingSOptions() {
               label={"X Coord"}
               type={"number"}
               defaultValue={5}
+              onChange={(event) => setBuildingX(event.target.value * 10)}
               InputLabelProps={{ shrink: true }}
             />
           </Grid2>
@@ -63,6 +78,7 @@ function BuildingSOptions() {
               label={"Y Coord"}
               type={"number"}
               defaultValue={5}
+              onChange={(event) => setBuildingY(event.target.value * 10)}
               InputLabelProps={{ shrink: true }}
             />
           </Grid2>
@@ -73,12 +89,11 @@ function BuildingSOptions() {
               onClick={() => {
                 dispatch(
                   addBuilding({
-                    buildingId: 1,
-                    XSize: 40,
-                    YSize: 30,
-                    X: 50,
-                    Y: 20,
-                    isRuin: false
+                    XSize: buildingWidth,
+                    YSize: buildingHeight,
+                    X: buildingX,
+                    Y: buildingY,
+                    isRuin: buildingIsRuin
                   })
                 );
               }}

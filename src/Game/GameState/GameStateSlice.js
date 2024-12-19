@@ -7,7 +7,7 @@ const initialState = {
   },
   buildings: [
     { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
-    { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: true }
+    { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: false }
   ],
   lastSelectedModelCoords: {
     X: 0,
@@ -117,7 +117,10 @@ export const GameStateSlice = createSlice({
     },
     addBuilding: (state, action) => {
       let buildings = [...state.buildings];
-      buildings.push(action.payload);
+      let newBuilding = { ...action.payload };
+      newBuilding.buildingId = buildings[buildings.length - 1].buildingId + 1;
+      console.log("ceva", buildings.length, newBuilding);
+      buildings.push(newBuilding);
       return {
         ...state,
         buildings: buildings

@@ -4,9 +4,7 @@ function GameBuilding({ XSize, YSize, zoom, X, Y, isRuin }) {
       style={{
         width: `${XSize * zoom}px`,
         height: `${YSize * zoom}px`,
-        backgroundColor: `${
-          !isRuin ? "rgb(143, 143, 143)" : "rgb(62, 62, 62)"
-        }`,
+        backgroundColor: `${isRuin ? "rgb(143, 143, 143)" : "rgb(62, 62, 62)"}`,
 
         position: "relative",
         left: `${X * zoom}px`,

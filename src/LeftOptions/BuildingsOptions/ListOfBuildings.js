@@ -4,7 +4,6 @@ import { Grid2 } from "@mui/material";
 
 function ListOfBuildings() {
   const listOfBuildings = useSelector(selectBuildings);
-  console.log("ceva", listOfBuildings);
   return (
     <div>
       <Grid2 container spacing={1}>
@@ -17,7 +16,7 @@ function ListOfBuildings() {
       </Grid2>
       {listOfBuildings.map((building) => {
         return (
-          <Grid2 container spacing={1}>
+          <Grid2 container spacing={1} key={building.buildingId}>
             <Grid2 size={2}>{building.buildingId}</Grid2>
             <Grid2 size={2}>{building.XSize / 10}</Grid2>
             <Grid2 size={2}>{building.YSize / 10}</Grid2>
