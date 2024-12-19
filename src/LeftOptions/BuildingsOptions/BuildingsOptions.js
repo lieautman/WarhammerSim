@@ -2,13 +2,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { ExpandMore } from "@mui/icons-material";
-import {
-  Button,
-  FormControlLabel,
-  Grid2,
-  TextField,
-  Checkbox
-} from "@mui/material";
+import { Button, Grid2, TextField, Checkbox } from "@mui/material";
 import ListOfBuildings from "./ListOfBuildings";
 import { useDispatch } from "react-redux";
 import { addBuilding } from "../../Game/GameState/GameStateSlice";
@@ -34,17 +28,13 @@ function BuildingSOptions() {
         <Grid2 container spacing={1}>
           <Grid2 size={6}>Add new building</Grid2>
           <Grid2 size={6}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={buildingIsRuin}
-                  onChange={() => {
-                    setBuildingIsRuin(!buildingIsRuin);
-                  }}
-                />
-              }
-              label={"Ruin"}
+            <Checkbox
+              checked={buildingIsRuin}
+              onChange={() => {
+                setBuildingIsRuin(!buildingIsRuin);
+              }}
             />
+            Ruin
           </Grid2>
           <Grid2 size={6}>
             <TextField
