@@ -119,7 +119,6 @@ export const GameStateSlice = createSlice({
       let buildings = [...state.buildings];
       let newBuilding = { ...action.payload };
       newBuilding.buildingId = buildings[buildings.length - 1].buildingId + 1;
-      console.log("ceva", buildings.length, newBuilding);
       buildings.push(newBuilding);
       return {
         ...state,
@@ -127,8 +126,11 @@ export const GameStateSlice = createSlice({
       };
     },
     removeBuilding: (state, action) => {
+      let buildings = [...state.buildings];
+      buildings.remove((building) => building.buildingId === action.payload);
       return {
-        ...state
+        ...state,
+        buildings: buildings
       };
     },
     loadModelData: (state, action) => {
@@ -266,6 +268,7 @@ export const {
   modifyMapCoordinates,
   resetMapCoordinates,
   addBuilding,
+  removeBuilding,
   loadModelData,
   selectModel,
   selectUnit,

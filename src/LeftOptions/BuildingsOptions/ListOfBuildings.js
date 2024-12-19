@@ -1,8 +1,11 @@
 import { selectBuildings } from "../../Game/GameState/GameStateSlice";
 import { useSelector } from "react-redux";
 import { Button, Checkbox, Grid2 } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { removeBuilding } from "../../Game/GameState/GameStateSlice";
 
 function ListOfBuildings() {
+  const dispatch = useDispatch();
   const listOfBuildings = useSelector(selectBuildings);
   return (
     <div>
@@ -68,7 +71,6 @@ function ListOfBuildings() {
           Ruin
         </Grid2>
       </Grid2>
-      <br />
       {listOfBuildings.map((building) => {
         return (
           <Grid2 container key={building.buildingId}>
@@ -133,7 +135,13 @@ function ListOfBuildings() {
                 justifyContent: "center"
               }}
             >
-              <Button variant="contained" size="small" onClick={() => {}}>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => {
+                  dispatch(removeBuilding(building.buildingId));
+                }}
+              >
                 Del
               </Button>
             </Grid2>
