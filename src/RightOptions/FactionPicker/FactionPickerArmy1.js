@@ -5,12 +5,11 @@ import { ExpandMore } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectFactionData } from "../../Game/GameState/ArmyPickerSlice";
-import { Grid2, Select } from "@mui/material";
+import { Button, Grid2 } from "@mui/material";
 
-function FactionPicker() {
+function FactionPickerArmy1() {
   const dispatch = useDispatch();
   const listOfFactions = useSelector(selectFactionData);
-  console.log("ceva", listOfFactions);
   return (
     <Accordion>
       <AccordionSummary
@@ -18,22 +17,12 @@ function FactionPicker() {
         aria-controls="panel2-content"
         id="panel2-header"
       >
-        Faction Picker
+        Faction Picker Army 1
       </AccordionSummary>
-      <AccordionDetails>
+      <AccordionDetails style={{ height: "50vh", overflowY: "scroll" }}>
         <Grid2 container>
           <Grid2
-            size={4}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            ID
-          </Grid2>
-          <Grid2
-            size={4}
+            size={10}
             style={{
               display: "flex",
               alignItems: "center",
@@ -43,7 +32,7 @@ function FactionPicker() {
             Name
           </Grid2>
           <Grid2
-            size={4}
+            size={2}
             style={{
               display: "flex",
               alignItems: "center",
@@ -52,10 +41,36 @@ function FactionPicker() {
           >
             Button
           </Grid2>
+          {listOfFactions.map((faction) => {
+            return (
+              <>
+                <Grid2
+                  size={10}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  {faction.name}
+                </Grid2>
+                <Grid2
+                  size={2}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <Button>Choose</Button>
+                </Grid2>
+              </>
+            );
+          })}
         </Grid2>
       </AccordionDetails>
     </Accordion>
   );
 }
 
-export default FactionPicker;
+export default FactionPickerArmy1;

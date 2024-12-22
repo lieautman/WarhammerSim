@@ -1,4 +1,5 @@
-import FactionPicker from "./FactionPicker/FactionPicker";
+import FactionPickerArmy1 from "./FactionPicker/FactionPickerArmy1";
+import FactionPickerArmy2 from "./FactionPicker/FactionPickerArmy2";
 
 function RightOptionsContainer() {
   return (
@@ -18,7 +19,8 @@ function RightOptionsContainer() {
           margin: "1vw"
         }}
       >
-        <FactionPicker />
+        <FactionPickerArmy1 />
+        <FactionPickerArmy2 />
       </div>
     </div>
   );
