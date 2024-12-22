@@ -6,8 +6,7 @@ import {
   selectBuildings,
   selectLastSelectedModelCoords
 } from "../GameState/GameStateSlice";
-import { selectArmys } from "../GameState/ArmyPickerSlice";
-import { moveSelectedModels } from "../GameState/GameStateSlice";
+import { selectArmys, moveSelectedModels } from "../GameState/ArmyPickerSlice";
 import { useState } from "react";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);

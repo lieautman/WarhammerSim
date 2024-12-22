@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { selectModelData } from "../../GameState/GameStateSlice";
 import { useDispatch } from "react-redux";
-import { selectModel, selectUnit } from "../../GameState/GameStateSlice";
+import { selectModel, selectUnit } from "../../GameState/ArmyPickerSlice";
 
 function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
   const dispatch = useDispatch();
