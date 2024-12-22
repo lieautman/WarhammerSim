@@ -22,8 +22,8 @@ function GameMap({ zoom }) {
   return (
     <div
       style={{
-        width: `${440 * zoom}px`,
-        height: `${700 * zoom}px`,
+        width: `${44 * 10 * zoom}px`,
+        height: `${70 * 10 * zoom}px`,
         backgroundColor: "blue",
         position: "relative",
         left: `${map.X}px`,
@@ -48,7 +48,7 @@ function GameMap({ zoom }) {
     >
       <div
         style={{
-          height: `${50 * zoom}px`,
+          height: `${5 * 10 * zoom}px`,
           display: "flex",
           backgroundColor: "yellow"
         }}
@@ -74,8 +74,8 @@ function GameMap({ zoom }) {
       </div>
       <div
         style={{
-          width: `${440 * zoom}px`,
-          height: `${600 * zoom}px`,
+          width: `${44 * 10 * zoom}px`,
+          height: `${60 * 10 * zoom}px`,
           backgroundColor: "black",
           position: "relative",
           zIndex: 0
@@ -95,7 +95,7 @@ function GameMap({ zoom }) {
       </div>
       <div
         style={{
-          height: `${50 * zoom}px`,
+          height: `${5 * 10 * zoom}px`,
           display: "flex",
           backgroundColor: "yellow"
         }}
