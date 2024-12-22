@@ -130,16 +130,43 @@ export const ArmyPickerSlice = createSlice({
                           ...model,
                           isSelected: !model.isSelected
                         };
+                      } else {
+                        return {
+                          ...model,
+                          isSelected: false
+                        };
                       }
-                      return model;
+                    })
+                  };
+                } else {
+                  return {
+                    ...unit,
+                    models: unit.models.map((model) => {
+                      return {
+                        ...model,
+                        isSelected: false
+                      };
                     })
                   };
                 }
-                return unit;
+              })
+            };
+          } else {
+            return {
+              ...army,
+              units: army.units.map((unit) => {
+                return {
+                  ...unit,
+                  models: unit.models.map((model) => {
+                    return {
+                      ...model,
+                      isSelected: false
+                    };
+                  })
+                };
               })
             };
           }
-          return army;
         })
       };
       returnObj = {

@@ -67,7 +67,7 @@ function GameModel({
         zIndex: 100
       }}
       onClick={(event) => {
-        if (!isMovingModels) {
+        if (!isSelected) {
           setStartMouseOffset({ X: event.clientX, Y: event.clientY });
           setIsMovingModels(true);
         } else {

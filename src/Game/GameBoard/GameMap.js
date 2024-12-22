@@ -112,6 +112,9 @@ function GameMap({ zoom }) {
               Y={model.Y}
               isSelected={model.isSelected}
               name={model.name}
+              isMovingModels={isMovingModels}
+              setIsMovingModels={setIsMovingModels}
+              setStartMouseOffset={setStartMouseOffset}
             />
           ))
         )}
