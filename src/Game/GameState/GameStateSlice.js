@@ -8,8 +8,7 @@ const initialState = {
   buildings: [
     { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
     { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: false }
-  ],
-  modelData: []
+  ]
 };
 
 export const GameStateSlice = createSlice({
@@ -49,9 +48,6 @@ export const GameStateSlice = createSlice({
         ...state,
         buildings: buildings
       };
-    },
-    loadModelData: (state, action) => {
-      return { ...state, modelData: action.payload };
     }
   }
 });
@@ -60,12 +56,10 @@ export const {
   modifyMapCoordinates,
   resetMapCoordinates,
   addBuilding,
-  removeBuilding,
-  loadModelData
+  removeBuilding
 } = GameStateSlice.actions;
 
 export const selectMap = (state) => state.GameStateReducer.map;
 export const selectBuildings = (state) => state.GameStateReducer.buildings;
-export const selectModelData = (state) => state.GameStateReducer.modelData;
 
 export default GameStateSlice.reducer;

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectModelData } from "../../GameState/GameStateSlice";
+import { selectModelData } from "../../GameState/ArmyPickerSlice";
 import { useDispatch } from "react-redux";
 import { selectModel } from "../../GameState/ArmyPickerSlice"; //selectUnit
 

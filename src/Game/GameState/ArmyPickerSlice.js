@@ -5,6 +5,8 @@ const initialState = {
     X: 0,
     Y: 0
   },
+  factionData: [],
+  modelData: [],
   armys: [
     {
       armyId: 0,
@@ -94,6 +96,9 @@ export const ArmyPickerSlice = createSlice({
   name: "ArmyPicker",
   initialState,
   reducers: {
+    loadModelData: (state, action) => {
+      return { ...state, modelData: action.payload };
+    },
     addUnitToArmy: (state, action) => {
       return state;
     },
@@ -250,6 +255,7 @@ export const ArmyPickerSlice = createSlice({
 });
 
 export const {
+  loadModelData,
   addUnitToArmy,
   addModelToUnit,
   removeModelFromUnit,
@@ -259,6 +265,7 @@ export const {
   moveSelectedModels
 } = ArmyPickerSlice.actions;
 
+export const selectModelData = (state) => state.ArmyPickerReducer.modelData;
 export const selectArmys = (state) => state.ArmyPickerReducer.armys;
 export const selectLastSelectedModelCoords = (state) =>
   state.ArmyPickerReducer.lastSelectedModelCoords;
