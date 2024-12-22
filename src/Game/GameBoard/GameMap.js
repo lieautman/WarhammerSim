@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectMap,
   selectBuildings,
-  selectArmys,
   selectLastSelectedModelCoords
 } from "../GameState/GameStateSlice";
+import { selectArmys } from "../GameState/ArmyPickerSlice";
 import { moveSelectedModels } from "../GameState/GameStateSlice";
 import { useState } from "react";
 function GameMap({ zoom }) {

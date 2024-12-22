@@ -13,90 +13,7 @@ const initialState = {
     X: 0,
     Y: 0
   },
-  modelData: [],
-  armys: [
-    {
-      armyId: 0,
-      units: [
-        {
-          unitId: 0,
-          models: [
-            {
-              modelId: 1,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            },
-            {
-              modelId: 2,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            },
-            {
-              modelId: 3,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            }
-          ]
-        },
-        {
-          unitId: 1,
-          models: [
-            {
-              modelId: 4,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            },
-            {
-              modelId: 5,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            },
-            {
-              modelId: 6,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      armyId: 1,
-      units: [
-        {
-          unitId: 0,
-          models: [
-            {
-              modelId: 7,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Tyranid Warriors With Melee Bio-weapons"
-            },
-            {
-              modelId: 8,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Tyranid Warriors With Ranged Bio-weapons"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  modelData: []
 };
 
 export const GameStateSlice = createSlice({
@@ -279,11 +196,10 @@ export const {
   moveSelectedModels
 } = GameStateSlice.actions;
 
-export const selectMap = (state) => state.map;
-export const selectBuildings = (state) => state.buildings;
+export const selectMap = (state) => state.GameStateReducer.map;
+export const selectBuildings = (state) => state.GameStateReducer.buildings;
 export const selectLastSelectedModelCoords = (state) =>
-  state.lastSelectedModelCoords;
-export const selectModelData = (state) => state.modelData;
-export const selectArmys = (state) => state.armys;
+  state.GameStateReducer.lastSelectedModelCoords;
+export const selectModelData = (state) => state.GameStateReducer.modelData;
 
 export default GameStateSlice.reducer;
