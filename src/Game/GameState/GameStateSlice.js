@@ -118,7 +118,9 @@ export const GameStateSlice = createSlice({
     addBuilding: (state, action) => {
       let buildings = [...state.buildings];
       let newBuilding = { ...action.payload };
-      newBuilding.buildingId = buildings[buildings.length - 1].buildingId + 1;
+      if (buildings.length !== 0)
+        newBuilding.buildingId = buildings[buildings.length - 1].buildingId + 1;
+      else newBuilding.buildingId = 0;
       buildings.push(newBuilding);
       return {
         ...state,
@@ -127,7 +129,9 @@ export const GameStateSlice = createSlice({
     },
     removeBuilding: (state, action) => {
       let buildings = [...state.buildings];
-      buildings.remove((building) => building.buildingId === action.payload);
+      buildings = buildings.filter(
+        (building) => building.buildingId !== action.payload
+      );
       return {
         ...state,
         buildings: buildings
