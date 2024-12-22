@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  factionData: [],
+  modelData: [],
   lastSelectedModelCoords: {
     X: 0,
     Y: 0
   },
-  factionData: [],
-  modelData: [],
   armys: [
     {
       armyId: 0,
@@ -98,6 +98,9 @@ export const ArmyPickerSlice = createSlice({
   reducers: {
     loadModelData: (state, action) => {
       return { ...state, modelData: action.payload };
+    },
+    loadFactionData: (state, action) => {
+      return { ...state, factionData: action.payload };
     },
     addUnitToArmy: (state, action) => {
       return state;
