@@ -1,12 +1,12 @@
 import GameModel from "./Figurines/GameModel";
 import GameBuilding from "./Figurines/GameBuilding";
 import { useDispatch, useSelector } from "react-redux";
+import { selectMap, selectBuildings } from "../GameState/GameStateSlice";
 import {
-  selectMap,
-  selectBuildings,
-  selectLastSelectedModelCoords
-} from "../GameState/GameStateSlice";
-import { selectArmys, moveSelectedModels } from "../GameState/ArmyPickerSlice";
+  selectLastSelectedModelCoords,
+  selectArmys,
+  moveSelectedModels
+} from "../GameState/ArmyPickerSlice";
 import { useState } from "react";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);
@@ -30,11 +30,17 @@ function GameMap({ zoom }) {
         top: `${map.Y}px`
       }}
       onMouseDown={(event) => {
+        if (!isMovingModels)
+          setStartMouseOffset({ X: event.clientX, Y: event.clientY });
         setIsMovingModels(true);
-        setStartMouseOffset({ X: event.clientX, Y: event.clientY });
       }}
       onMouseMove={(event) => {
         if (event.ctrlKey && isMovingModels) {
+          console.log(
+            "ceva client-start",
+            (event.clientX - startMouseOffset.X) / zoom
+          );
+          console.log("ceva last", lastSelectedModelCoords.X);
           event.preventDefault();
           dispatch(
             moveSelectedModels({

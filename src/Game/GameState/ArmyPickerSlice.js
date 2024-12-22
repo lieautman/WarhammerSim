@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  lastSelectedModelCoords: {
+    X: 0,
+    Y: 0
+  },
   armys: [
     {
       armyId: 0,
@@ -229,5 +233,7 @@ export const {
 } = ArmyPickerSlice.actions;
 
 export const selectArmys = (state) => state.ArmyPickerReducer.armys;
+export const selectLastSelectedModelCoords = (state) =>
+  state.ArmyPickerReducer.lastSelectedModelCoords;
 
 export default ArmyPickerSlice.reducer;

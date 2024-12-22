@@ -9,10 +9,6 @@ const initialState = {
     { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
     { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: false }
   ],
-  lastSelectedModelCoords: {
-    X: 0,
-    Y: 0
-  },
   modelData: []
 };
 
@@ -70,8 +66,6 @@ export const {
 
 export const selectMap = (state) => state.GameStateReducer.map;
 export const selectBuildings = (state) => state.GameStateReducer.buildings;
-export const selectLastSelectedModelCoords = (state) =>
-  state.GameStateReducer.lastSelectedModelCoords;
 export const selectModelData = (state) => state.GameStateReducer.modelData;
 
 export default GameStateSlice.reducer;

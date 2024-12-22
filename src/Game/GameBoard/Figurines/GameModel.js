@@ -52,8 +52,7 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
         position: "relative",
         left: `${X * zoom}px`,
         top: `${Y * zoom}px`,
-        zIndex: 100,
-        transform: "translate(-50%, -50%)"
+        zIndex: 100
       }}
       onClick={(event) => {
         if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
