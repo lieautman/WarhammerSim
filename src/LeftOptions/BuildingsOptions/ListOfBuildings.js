@@ -11,7 +11,7 @@ function ListOfBuildings() {
     <div>
       <Grid2 container>
         <Grid2
-          size={2}
+          size={1}
           style={{
             display: "flex",
             alignItems: "center",
@@ -21,7 +21,7 @@ function ListOfBuildings() {
           ID
         </Grid2>
         <Grid2
-          size={1.5}
+          size={1}
           style={{
             display: "flex",
             alignItems: "center",
@@ -31,7 +31,7 @@ function ListOfBuildings() {
           W
         </Grid2>
         <Grid2
-          size={1.5}
+          size={1}
           style={{
             display: "flex",
             alignItems: "center",
@@ -41,7 +41,7 @@ function ListOfBuildings() {
           H
         </Grid2>
         <Grid2
-          size={1.5}
+          size={1}
           style={{
             display: "flex",
             alignItems: "center",
@@ -51,7 +51,7 @@ function ListOfBuildings() {
           X
         </Grid2>
         <Grid2
-          size={1.5}
+          size={1}
           style={{
             display: "flex",
             alignItems: "center",
@@ -75,7 +75,7 @@ function ListOfBuildings() {
         return (
           <Grid2 container key={building.buildingId}>
             <Grid2
-              size={2}
+              size={1}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -85,7 +85,7 @@ function ListOfBuildings() {
               {building.buildingId}
             </Grid2>
             <Grid2
-              size={1.5}
+              size={1}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -95,7 +95,7 @@ function ListOfBuildings() {
               {building.XSize / 10}
             </Grid2>
             <Grid2
-              size={1.5}
+              size={1}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -105,7 +105,7 @@ function ListOfBuildings() {
               {building.YSize / 10}
             </Grid2>
             <Grid2
-              size={1.5}
+              size={1}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -115,7 +115,7 @@ function ListOfBuildings() {
               {building.X / 10}
             </Grid2>
             <Grid2
-              size={1.5}
+              size={1}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -128,7 +128,7 @@ function ListOfBuildings() {
               <Checkbox checked={building.isRuin} disabled={true} />
             </Grid2>
             <Grid2
-              size={2}
+              size={5}
               style={{
                 display: "flex",
                 alignItems: "center",
