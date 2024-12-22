@@ -14,6 +14,7 @@ function LeftOptionsContainer() {
     >
       <div
         style={{
+          width: "18vw",
           margin: "1vw"
         }}
       >

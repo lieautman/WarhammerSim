@@ -5,6 +5,7 @@ import { ExpandMore } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectFactionData } from "../../Game/GameState/ArmyPickerSlice";
+import { Grid2, Select } from "@mui/material";
 
 function FactionPicker() {
   const dispatch = useDispatch();
@@ -19,7 +20,40 @@ function FactionPicker() {
       >
         Faction Picker
       </AccordionSummary>
-      <AccordionDetails></AccordionDetails>
+      <AccordionDetails>
+        <Grid2 container>
+          <Grid2
+            size={4}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            ID
+          </Grid2>
+          <Grid2
+            size={4}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            Name
+          </Grid2>
+          <Grid2
+            size={4}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            Button
+          </Grid2>
+        </Grid2>
+      </AccordionDetails>
     </Accordion>
   );
 }

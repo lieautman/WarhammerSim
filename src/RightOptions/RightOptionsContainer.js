@@ -14,6 +14,7 @@ function RightOptionsContainer() {
     >
       <div
         style={{
+          width: "18vw",
           margin: "1vw"
         }}
       >
