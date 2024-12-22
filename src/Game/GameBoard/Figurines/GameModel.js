@@ -1,9 +1,21 @@
 import { useSelector } from "react-redux";
 import { selectModelData } from "../../GameState/GameStateSlice";
 import { useDispatch } from "react-redux";
-import { selectModel, selectUnit } from "../../GameState/ArmyPickerSlice";
+import { selectModel } from "../../GameState/ArmyPickerSlice"; //selectUnit
 
-function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
+function GameModel({
+  modelId,
+  unitId,
+  armyId,
+  zoom,
+  X,
+  Y,
+  isSelected,
+  name,
+  isMovingModels,
+  setIsMovingModels,
+  setStartMouseOffset
+}) {
   const dispatch = useDispatch();
   //for each model, look in the modelData and retrive info based on the name
   const modelData = useSelector(selectModelData).find(
@@ -55,8 +67,15 @@ function GameModel({ modelId, unitId, armyId, zoom, X, Y, isSelected, name }) {
         zIndex: 100
       }}
       onClick={(event) => {
-        if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
-        else dispatch(selectModel({ armyId, unitId, modelId }));
+        if (!isMovingModels) {
+          setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+          setIsMovingModels(true);
+        } else {
+          setIsMovingModels(false);
+        }
+        //if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
+        //else
+        dispatch(selectModel({ armyId, unitId, modelId }));
       }}
     />
   );

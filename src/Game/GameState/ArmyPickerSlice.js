@@ -152,48 +152,48 @@ export const ArmyPickerSlice = createSlice({
       };
       return returnObj;
     },
-    selectUnit: (state, action) => {
-      const { armyId, unitId } = action.payload;
-      let modelX, modelY;
-      let returnObj = {
-        ...state,
-        armys: state.armys.map((army) => {
-          // Find the target army
-          if (army.armyId === armyId) {
-            return {
-              ...army,
-              units: army.units.map((unit) => {
-                // Find the target unit
-                if (unit.unitId === unitId) {
-                  return {
-                    ...unit,
-                    models: unit.models.map((model) => {
-                      modelX = model.X;
-                      modelY = model.Y;
-                      return {
-                        ...model,
-                        isSelected: !model.isSelected // Toggle isSelected for all models in the unit
-                      };
-                    })
-                  };
-                }
-                return unit;
-              })
-            };
-          }
-          return army;
-        })
-      };
-      returnObj = {
-        ...returnObj,
-        lastSelectedModelCoords: {
-          ...state.lastSelectedModelCoords,
-          X: modelX,
-          Y: modelY
-        }
-      };
-      return returnObj;
-    },
+    // selectUnit: (state, action) => {
+    //   const { armyId, unitId } = action.payload;
+    //   let modelX, modelY;
+    //   let returnObj = {
+    //     ...state,
+    //     armys: state.armys.map((army) => {
+    //       // Find the target army
+    //       if (army.armyId === armyId) {
+    //         return {
+    //           ...army,
+    //           units: army.units.map((unit) => {
+    //             // Find the target unit
+    //             if (unit.unitId === unitId) {
+    //               return {
+    //                 ...unit,
+    //                 models: unit.models.map((model) => {
+    //                   modelX = model.X;
+    //                   modelY = model.Y;
+    //                   return {
+    //                     ...model,
+    //                     isSelected: !model.isSelected // Toggle isSelected for all models in the unit
+    //                   };
+    //                 })
+    //               };
+    //             }
+    //             return unit;
+    //           })
+    //         };
+    //       }
+    //       return army;
+    //     })
+    //   };
+    //   returnObj = {
+    //     ...returnObj,
+    //     lastSelectedModelCoords: {
+    //       ...state.lastSelectedModelCoords,
+    //       X: modelX,
+    //       Y: modelY
+    //     }
+    //   };
+    //   return returnObj;
+    // },
     moveSelectedModels: (state, action) => {
       const { X, Y } = action.payload;
       return {
@@ -228,7 +228,7 @@ export const {
   removeModelFromUnit,
   removeUnitFromArmy,
   selectModel,
-  selectUnit,
+  //selectUnit,
   moveSelectedModels
 } = ArmyPickerSlice.actions;
 

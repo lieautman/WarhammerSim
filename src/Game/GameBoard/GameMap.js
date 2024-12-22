@@ -29,18 +29,8 @@ function GameMap({ zoom }) {
         left: `${map.X}px`,
         top: `${map.Y}px`
       }}
-      onMouseDown={(event) => {
-        if (!isMovingModels)
-          setStartMouseOffset({ X: event.clientX, Y: event.clientY });
-        setIsMovingModels(true);
-      }}
       onMouseMove={(event) => {
         if (event.ctrlKey && isMovingModels) {
-          console.log(
-            "ceva client-start",
-            (event.clientX - startMouseOffset.X) / zoom
-          );
-          console.log("ceva last", lastSelectedModelCoords.X);
           event.preventDefault();
           dispatch(
             moveSelectedModels({
@@ -75,6 +65,9 @@ function GameMap({ zoom }) {
               Y={model.Y}
               isSelected={model.isSelected}
               name={model.name}
+              isMovingModels={isMovingModels}
+              setIsMovingModels={setIsMovingModels}
+              setStartMouseOffset={setStartMouseOffset}
             />
           ))
         )}
