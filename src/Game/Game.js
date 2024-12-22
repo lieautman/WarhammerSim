@@ -1,20 +1,31 @@
 import { useDispatch } from "react-redux";
 import GameBoard from "./GameBoard/GameBoard";
-import { loadModelData } from "./GameState/ArmyPickerSlice";
+import { loadFactionData, loadModelData } from "./GameState/ArmyPickerSlice";
 import { useEffect, useState } from "react";
 
 function Game() {
   const dispatch = useDispatch();
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [modelDataLoaded, setModelDataLoaded] = useState(false);
+  const [factionDataLoaded, setFactionDataLoaded] = useState(false);
+
+  //loadFactionData
+  useEffect(() => {
+    if (!factionDataLoaded) {
+      fetch("./factionData.json")
+        .then((response) => response.json())
+        .then((json) => dispatch(loadFactionData(json)));
+      setFactionDataLoaded(true);
+    }
+  }, [dispatch, factionDataLoaded]);
   //loadModelData
   useEffect(() => {
-    if (!dataLoaded) {
+    if (!modelDataLoaded) {
       fetch("./modelData.json")
         .then((response) => response.json())
         .then((json) => dispatch(loadModelData(json)));
-      setDataLoaded(true);
+      setModelDataLoaded(true);
     }
-  }, [dispatch, dataLoaded]);
+  }, [dispatch, modelDataLoaded]);
 
   return <GameBoard />;
 }

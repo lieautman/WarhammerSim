@@ -96,11 +96,11 @@ export const ArmyPickerSlice = createSlice({
   name: "ArmyPicker",
   initialState,
   reducers: {
-    loadModelData: (state, action) => {
-      return { ...state, modelData: action.payload };
-    },
     loadFactionData: (state, action) => {
       return { ...state, factionData: action.payload };
+    },
+    loadModelData: (state, action) => {
+      return { ...state, modelData: action.payload };
     },
     addUnitToArmy: (state, action) => {
       return state;
@@ -258,6 +258,7 @@ export const ArmyPickerSlice = createSlice({
 });
 
 export const {
+  loadFactionData,
   loadModelData,
   addUnitToArmy,
   addModelToUnit,
