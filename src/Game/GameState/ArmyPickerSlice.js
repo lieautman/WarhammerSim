@@ -269,6 +269,7 @@ export const {
   moveSelectedModels
 } = ArmyPickerSlice.actions;
 
+export const selectFactionData = (state) => state.ArmyPickerReducer.factionData;
 export const selectModelData = (state) => state.ArmyPickerReducer.modelData;
 export const selectArmys = (state) => state.ArmyPickerReducer.armys;
 export const selectLastSelectedModelCoords = (state) =>
