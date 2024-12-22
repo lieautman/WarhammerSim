@@ -1,3 +1,5 @@
+import FactionPicker from "./FactionPicker/FactionPicker";
+
 function RightOptionsContainer() {
   return (
     <div
@@ -14,7 +16,9 @@ function RightOptionsContainer() {
         style={{
           margin: "1vw"
         }}
-      ></div>
+      >
+        <FactionPicker />
+      </div>
     </div>
   );
 }
