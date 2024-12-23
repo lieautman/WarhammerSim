@@ -20,7 +20,7 @@ function Game() {
   //loadModelData
   useEffect(() => {
     if (!modelDataLoaded) {
-      fetch("./modelData.json")
+      fetch("./modelData1.json")
         .then((response) => response.json())
         .then((json) => dispatch(loadModelData(json)));
       setModelDataLoaded(true);
