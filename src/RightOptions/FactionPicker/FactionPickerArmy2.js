@@ -17,7 +17,7 @@ function FactionPickerArmy2() {
         aria-controls="panel2-content"
         id="panel2-header"
       >
-        Faction Picker Army 1
+        Faction Picker Army 2
       </AccordionSummary>
       <AccordionDetails style={{ height: "50vh", overflowY: "scroll" }}>
         <Grid2 container>
