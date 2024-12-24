@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { selectFactionData } from "../../Game/GameState/ArmyPickerSlice";
 import { Button, Grid2 } from "@mui/material";
 
-function ModelPickerArmy1() {
+function UnitlPickerArmy2() {
   return (
     <Accordion>
       <AccordionSummary
@@ -15,7 +15,7 @@ function ModelPickerArmy1() {
         aria-controls="panel2-content"
         id="panel2-header"
       >
-        Model Picker Army 1
+        Unit Picker Army 1
       </AccordionSummary>
       <AccordionDetails style={{ height: "50vh", overflowY: "scroll" }}>
         <Grid2 container>
@@ -45,4 +45,4 @@ function ModelPickerArmy1() {
   );
 }
 
-export default ModelPickerArmy1;
+export default UnitlPickerArmy2;
