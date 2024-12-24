@@ -44,45 +44,45 @@ function FactionPickerArmy1() {
           >
             Button
           </Grid2>
-          {listOfFactions.map((faction) => {
-            return (
-              <>
-                <Grid2
-                  size={10}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  {faction.name}
-                </Grid2>
-                <Grid2
-                  size={2}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  <Button
-                    onClick={() => {
-                      dispatch(
-                        selectFaction({
-                          armyId: 0,
-                          factionId: faction.id,
-                          factionName: faction.name
-                        })
-                      );
-                    }}
-                  >
-                    Choose
-                  </Button>
-                </Grid2>
-              </>
-            );
-          })}
         </Grid2>
+        {listOfFactions.map((faction) => {
+          return (
+            <Grid2 container key={faction.id}>
+              <Grid2
+                size={10}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                {faction.name}
+              </Grid2>
+              <Grid2
+                size={2}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                }}
+              >
+                <Button
+                  onClick={() => {
+                    dispatch(
+                      selectFaction({
+                        armyId: 0,
+                        factionId: faction.id,
+                        factionName: faction.name
+                      })
+                    );
+                  }}
+                >
+                  Choose
+                </Button>
+              </Grid2>
+            </Grid2>
+          );
+        })}
       </AccordionDetails>
     </Accordion>
   );

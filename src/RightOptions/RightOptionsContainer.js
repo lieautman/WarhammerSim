@@ -1,5 +1,7 @@
 import FactionPickerArmy1 from "./FactionPicker/FactionPickerArmy1";
 import FactionPickerArmy2 from "./FactionPicker/FactionPickerArmy2";
+import ModelPickerArmy1 from "./ModelPicker/ModelPickerArmy1";
+import ModelPickerArmy2 from "./ModelPicker/ModelPickerArmy2";
 
 function RightOptionsContainer() {
   return (
@@ -21,6 +23,15 @@ function RightOptionsContainer() {
       >
         <FactionPickerArmy1 />
         <FactionPickerArmy2 />
+      </div>
+      <div
+        style={{
+          width: "18vw",
+          margin: "1vw"
+        }}
+      >
+        <ModelPickerArmy1 />
+        <ModelPickerArmy2 />
       </div>
     </div>
   );
