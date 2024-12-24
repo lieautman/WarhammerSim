@@ -2,12 +2,17 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { ExpandMore } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectFactionData } from "../../Game/GameState/ArmyPickerSlice";
 import { Button, Grid2 } from "@mui/material";
+import {
+  selectModelData,
+  selectArmys
+} from "../../Game/GameState/ArmyPickerSlice";
 
 function UnitlPickerArmy1() {
+  const modelData = useSelector(selectModelData);
+  const armys = useSelector(selectArmys);
+
   return (
     <Accordion>
       <AccordionSummary

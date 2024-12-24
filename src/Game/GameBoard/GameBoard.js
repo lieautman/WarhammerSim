@@ -7,6 +7,7 @@ import {
   resetMapCoordinates
 } from "../GameState/GameStateSlice";
 import { selectMap } from "../GameState/GameStateSlice";
+import { Button } from "@mui/material";
 
 function GameBoard() {
   const [zoom, setZoom] = useState(1);
@@ -22,7 +23,7 @@ function GameBoard() {
       style={{
         width: "60vw",
         height: "100vh",
-        backgroundColor: "green",
+        backgroundColor: "rgb(120, 120, 120)",
         overflow: "hidden"
       }}
       onWheel={(event) => {
@@ -61,7 +62,8 @@ function GameBoard() {
         event.stopPropagation();
       }}
     >
-      <button
+      <Button
+        variant="contained"
         style={{
           position: "absolute",
           left: "50vw",
@@ -73,7 +75,7 @@ function GameBoard() {
         }}
       >
         Reset map
-      </button>
+      </Button>
       <GameMap zoom={zoom} />
     </div>
   );
