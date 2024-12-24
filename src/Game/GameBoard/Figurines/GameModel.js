@@ -60,7 +60,7 @@ function GameModel({
         }px`,
         borderRadius: "100%",
         backgroundColor: `${isSelected ? selectedColor : color}`,
-        position: "relative",
+        position: "absolute",
         left: `${X * zoom}px`,
         top: `${Y * zoom}px`,
         zIndex: 100

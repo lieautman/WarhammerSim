@@ -49,6 +49,7 @@ function GameMap({ zoom }) {
         style={{
           height: `${5 * 10 * zoom}px`,
           display: "flex",
+          position: "relative",
           backgroundColor: "rgb(195, 195, 195)"
         }}
       >
@@ -97,6 +98,7 @@ function GameMap({ zoom }) {
         style={{
           height: `${5 * 10 * zoom}px`,
           display: "flex",
+          position: "relative",
           backgroundColor: "rgb(195, 195, 195)"
         }}
       >

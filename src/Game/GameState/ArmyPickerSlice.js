@@ -25,14 +25,14 @@ const initialState = {
             },
             {
               modelId: 2,
-              X: 10,
+              X: 20,
               Y: 10,
               isSelected: false,
               name: "Spore Mines"
             },
             {
               modelId: 3,
-              X: 10,
+              X: 30,
               Y: 10,
               isSelected: false,
               name: "Spore Mines"
@@ -44,21 +44,21 @@ const initialState = {
           models: [
             {
               modelId: 1,
-              X: 10,
+              X: 40,
               Y: 10,
               isSelected: false,
               name: "Hormagaunts"
             },
             {
               modelId: 2,
-              X: 10,
+              X: 50,
               Y: 10,
               isSelected: false,
               name: "Hormagaunts"
             },
             {
               modelId: 3,
-              X: 10,
+              X: 60,
               Y: 10,
               isSelected: false,
               name: "Hormagaunts"
@@ -84,7 +84,7 @@ const initialState = {
             },
             {
               modelId: 2,
-              X: 10,
+              X: 30,
               Y: 10,
               isSelected: false,
               name: "Tyranid Warriors With Ranged Bio-weapons"
