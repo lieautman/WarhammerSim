@@ -18,7 +18,6 @@ function GameMap({ zoom }) {
   const [isMovingModels, setIsMovingModels] = useState(false);
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
   const dispatch = useDispatch();
-
   return (
     <div
       style={{
@@ -56,7 +55,7 @@ function GameMap({ zoom }) {
         {armys[0].units.map((unit) =>
           unit.models.map((model) => (
             <GameModel
-              key={model.modelId}
+              key={unit.unitId + "_" + model.modelId}
               modelId={model.modelId}
               unitId={unit.unitId}
               armyId={armys[0].armyId}
@@ -104,7 +103,7 @@ function GameMap({ zoom }) {
         {armys[1].units.map((unit) =>
           unit.models.map((model) => (
             <GameModel
-              key={model.modelId}
+              key={unit.unitId + "_" + model.modelId}
               modelId={model.modelId}
               unitId={unit.unitId}
               armyId={armys[1].armyId}

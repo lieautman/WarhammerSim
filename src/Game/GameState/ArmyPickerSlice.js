@@ -43,21 +43,21 @@ const initialState = {
           unitId: 1,
           models: [
             {
-              modelId: 4,
+              modelId: 1,
               X: 10,
               Y: 10,
               isSelected: false,
               name: "Hormagaunts"
             },
             {
-              modelId: 5,
+              modelId: 2,
               X: 10,
               Y: 10,
               isSelected: false,
               name: "Hormagaunts"
             },
             {
-              modelId: 6,
+              modelId: 3,
               X: 10,
               Y: 10,
               isSelected: false,
@@ -76,14 +76,14 @@ const initialState = {
           unitId: 0,
           models: [
             {
-              modelId: 7,
+              modelId: 1,
               X: 10,
               Y: 10,
               isSelected: false,
               name: "Tyranid Warriors With Melee Bio-weapons"
             },
             {
-              modelId: 8,
+              modelId: 2,
               X: 10,
               Y: 10,
               isSelected: false,
@@ -121,7 +121,25 @@ export const ArmyPickerSlice = createSlice({
       };
     },
     addUnitToArmy: (state, action) => {
-      return state;
+      let units = [
+        ...state.armys.find((army) => army.armyId === action.payload.armyId)
+          .units
+      ];
+      let newUnit = { ...action.payload.newUnit };
+      if (units.length !== 0)
+        newUnit.unitId = units[units.length - 1].unitId + 1;
+      else newUnit.unitId = 0;
+      units.push(newUnit);
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          if (army.armyId === action.payload.armyId) {
+            return { ...army, units: units };
+          } else {
+            return { ...army };
+          }
+        })
+      };
     },
     addModelToUnit: (state, action) => {
       return state;
