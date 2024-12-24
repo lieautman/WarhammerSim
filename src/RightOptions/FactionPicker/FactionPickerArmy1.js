@@ -62,7 +62,17 @@ function FactionPickerArmy1() {
                     justifyContent: "center"
                   }}
                 >
-                  <Button>Choose</Button>
+                  <Button
+                    onClick={() => {
+                      dispatch({
+                        armyId: 0,
+                        factionId: faction.id,
+                        factionName: faction.name
+                      });
+                    }}
+                  >
+                    Choose
+                  </Button>
                 </Grid2>
               </>
             );

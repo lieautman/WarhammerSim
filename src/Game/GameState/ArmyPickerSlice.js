@@ -10,6 +10,8 @@ const initialState = {
   armys: [
     {
       armyId: 0,
+      factionId: null,
+      factionName: "",
       units: [
         {
           unitId: 0,
@@ -67,6 +69,8 @@ const initialState = {
     },
     {
       armyId: 1,
+      factionId: null,
+      factionName: "",
       units: [
         {
           unitId: 0,
@@ -101,6 +105,20 @@ export const ArmyPickerSlice = createSlice({
     },
     loadModelData: (state, action) => {
       return { ...state, modelData: action.payload };
+    },
+    selectFaction: (state, action) => {
+      const { armyId, factionId, factionName } = action.payload;
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          // Find the target army
+          if (army.armyId === armyId) {
+            return { ...army, factionId, factionName };
+          } else {
+            return { ...army };
+          }
+        })
+      };
     },
     addUnitToArmy: (state, action) => {
       return state;
