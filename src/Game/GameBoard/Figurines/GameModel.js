@@ -12,9 +12,10 @@ function GameModel({
   Y,
   isSelected,
   name,
-  isMovingModels,
   setIsMovingModels,
-  setStartMouseOffset
+  setStartMouseOffset,
+  color,
+  selectedColor
 }) {
   const dispatch = useDispatch();
   //for each model, look in the modelData and retrive info based on the name
@@ -58,9 +59,7 @@ function GameModel({
           zoom
         }px`,
         borderRadius: "100%",
-        backgroundColor: `${
-          isSelected ? "rgb(208, 132, 94)" : "rgb(211, 39, 0)"
-        }`,
+        backgroundColor: `${isSelected ? selectedColor : color}`,
         position: "relative",
         left: `${X * zoom}px`,
         top: `${Y * zoom}px`,

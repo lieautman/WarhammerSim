@@ -65,9 +65,10 @@ function GameMap({ zoom }) {
               Y={model.Y}
               isSelected={model.isSelected}
               name={model.name}
-              isMovingModels={isMovingModels}
               setIsMovingModels={setIsMovingModels}
               setStartMouseOffset={setStartMouseOffset}
+              color={"rgb(211, 39, 0)"}
+              selectedColor={"rgb(211, 139, 100)"}
             />
           ))
         )}
@@ -112,9 +113,10 @@ function GameMap({ zoom }) {
               Y={model.Y}
               isSelected={model.isSelected}
               name={model.name}
-              isMovingModels={isMovingModels}
               setIsMovingModels={setIsMovingModels}
               setStartMouseOffset={setStartMouseOffset}
+              color={"rgb(0, 60, 211)"}
+              selectedColor={"rgb(100, 160, 211)"}
             />
           ))
         )}
