@@ -4,7 +4,10 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import { ExpandMore } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { selectFactionData } from "../../Game/GameState/ArmyPickerSlice";
+import {
+  selectFaction,
+  selectFactionData
+} from "../../Game/GameState/ArmyPickerSlice";
 import { Button, Grid2 } from "@mui/material";
 
 function FactionPickerArmy1() {
@@ -64,11 +67,13 @@ function FactionPickerArmy1() {
                 >
                   <Button
                     onClick={() => {
-                      dispatch({
-                        armyId: 0,
-                        factionId: faction.id,
-                        factionName: faction.name
-                      });
+                      dispatch(
+                        selectFaction({
+                          armyId: 0,
+                          factionId: faction.id,
+                          factionName: faction.name
+                        })
+                      );
                     }}
                   >
                     Choose

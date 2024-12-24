@@ -113,7 +113,7 @@ export const ArmyPickerSlice = createSlice({
         armys: state.armys.map((army) => {
           // Find the target army
           if (army.armyId === armyId) {
-            return { ...army, factionId, factionName };
+            return { ...army, factionId, factionName, units: [] };
           } else {
             return { ...army };
           }
@@ -278,6 +278,7 @@ export const ArmyPickerSlice = createSlice({
 export const {
   loadFactionData,
   loadModelData,
+  selectFaction,
   addUnitToArmy,
   addModelToUnit,
   removeModelFromUnit,
