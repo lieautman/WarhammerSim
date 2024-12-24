@@ -49,7 +49,7 @@ function GameMap({ zoom }) {
         style={{
           height: `${5 * 10 * zoom}px`,
           display: "flex",
-          backgroundColor: "yellow"
+          backgroundColor: "rgb(195, 195, 195)"
         }}
       >
         {armys[0].units.map((unit) =>
@@ -97,7 +97,7 @@ function GameMap({ zoom }) {
         style={{
           height: `${5 * 10 * zoom}px`,
           display: "flex",
-          backgroundColor: "yellow"
+          backgroundColor: "rgb(195, 195, 195)"
         }}
       >
         {armys[1].units.map((unit) =>
