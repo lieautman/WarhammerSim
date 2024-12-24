@@ -1,7 +1,7 @@
 import FactionPickerArmy1 from "./FactionPicker/FactionPickerArmy1";
 import FactionPickerArmy2 from "./FactionPicker/FactionPickerArmy2";
-import UnitlPickerArmy1 from "./ModelPicker/UnitlPickerArmy1";
-import UnitlPickerArmy2 from "./ModelPicker/UnitlPickerArmy2";
+import UnitlPickerArmy1 from "./UnitPicker/UnitlPickerArmy1";
+import UnitlPickerArmy2 from "./UnitPicker/UnitlPickerArmy2";
 
 function RightOptionsContainer() {
   return (
