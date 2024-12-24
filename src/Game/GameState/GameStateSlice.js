@@ -5,10 +5,7 @@ const initialState = {
     X: 0,
     Y: 0
   },
-  buildings: [
-    { buildingId: 0, XSize: 20, YSize: 30, X: 20, Y: 30, isRuin: true },
-    { buildingId: 1, XSize: 20, YSize: 30, X: 80, Y: 130, isRuin: false }
-  ]
+  buildings: []
 };
 
 export const GameStateSlice = createSlice({
