@@ -49,7 +49,7 @@ function UnitlPickerArmy2() {
           </Grid2>
         </Grid2>
         {modelData
-          .filter((model) => model.faction_id === armys[0].factionId)
+          .filter((model) => model.faction_id === armys[1].factionId)
           .map((el) => {
             return (
               <Grid2 container key={el.id}>
