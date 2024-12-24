@@ -23,7 +23,7 @@ function UnitlPickerArmy2() {
         aria-controls="panel2-content"
         id="panel2-header"
       >
-        Unit Picker Army 1
+        Unit Picker Army 2
       </AccordionSummary>
       <AccordionDetails style={{ height: "50vh", overflowY: "scroll" }}>
         <Grid2 container>
