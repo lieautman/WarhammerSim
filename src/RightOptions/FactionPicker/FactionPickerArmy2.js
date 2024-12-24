@@ -69,7 +69,7 @@ function FactionPickerArmy2() {
                     onClick={() => {
                       dispatch(
                         selectFaction({
-                          armyId: 0,
+                          armyId: 1,
                           factionId: faction.id,
                           factionName: faction.name
                         })
