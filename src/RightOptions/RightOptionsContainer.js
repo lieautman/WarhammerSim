@@ -1,5 +1,3 @@
-import FactionPickerArmy1 from "./FactionPicker/FactionPickerArmy1";
-import FactionPickerArmy2 from "./FactionPicker/FactionPickerArmy2";
 import UnitlPickerArmy1 from "./UnitPicker/UnitlPickerArmy1";
 import UnitlPickerArmy2 from "./UnitPicker/UnitlPickerArmy2";
 
@@ -15,15 +13,6 @@ function RightOptionsContainer() {
         alignItems: "center"
       }}
     >
-      <div
-        style={{
-          width: "18vw",
-          margin: "1vw"
-        }}
-      >
-        <FactionPickerArmy1 />
-        <FactionPickerArmy2 />
-      </div>
       <div
         style={{
           width: "18vw",
