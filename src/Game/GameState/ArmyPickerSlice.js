@@ -152,9 +152,7 @@ export const ArmyPickerSlice = createSlice({
       const modelDataEntry = state.modelData.find(
         (model) => model.name === modelName
       );
-      const modelWidth = modelDataEntry
-        ? parseInt(modelDataEntry.base_size)
-        : 0; // Default to 0 if model not found
+      const modelWidth = modelDataEntry.base_size;
 
       // Calculate X and Y coordinates
       if (units.length !== 0) {
