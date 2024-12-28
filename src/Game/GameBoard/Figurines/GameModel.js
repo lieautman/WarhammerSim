@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { selectModelData } from "../../GameState/ArmyPickerSlice";
 import { useDispatch } from "react-redux";
 import { selectModel } from "../../GameState/ArmyPickerSlice"; //selectUnit
+import { Tooltip } from "@mui/material";
 
 function GameModel({
   modelId,
@@ -38,45 +39,53 @@ function GameModel({
   ]);
 
   return (
-    <div
-      style={{
-        width: `${
-          sizeDict.get(
-            parseInt(
-              modelData?.base_size.substring(0, modelData?.base_size.length - 2)
-            )
-          ) *
-          10 *
-          zoom
-        }px`,
-        height: `${
-          sizeDict.get(
-            parseInt(
-              modelData?.base_size.substring(0, modelData?.base_size.length - 2)
-            )
-          ) *
-          10 *
-          zoom
-        }px`,
-        borderRadius: "100%",
-        backgroundColor: `${isSelected ? selectedColor : color}`,
-        position: "absolute",
-        left: `${X * zoom}px`,
-        top: `${Y * zoom}px`,
-        zIndex: 100
-      }}
-      onClick={(event) => {
-        if (!isSelected) {
-          setStartMouseOffset({ X: event.clientX, Y: event.clientY });
-          setIsMovingModels(true);
-        } else {
-          setIsMovingModels(false);
-        }
-        //if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
-        //else
-        dispatch(selectModel({ armyId, unitId, modelId }));
-      }}
-    />
+    <Tooltip title={modelData.name} arrow>
+      <div
+        style={{
+          width: `${
+            sizeDict.get(
+              parseInt(
+                modelData?.base_size.substring(
+                  0,
+                  modelData?.base_size.length - 2
+                )
+              )
+            ) *
+            10 *
+            zoom
+          }px`,
+          height: `${
+            sizeDict.get(
+              parseInt(
+                modelData?.base_size.substring(
+                  0,
+                  modelData?.base_size.length - 2
+                )
+              )
+            ) *
+            10 *
+            zoom
+          }px`,
+          borderRadius: "100%",
+          backgroundColor: `${isSelected ? selectedColor : color}`,
+          position: "absolute",
+          left: `${X * zoom}px`,
+          top: `${Y * zoom}px`,
+          zIndex: 100
+        }}
+        onClick={(event) => {
+          if (!isSelected) {
+            setStartMouseOffset({ X: event.clientX, Y: event.clientY });
+            setIsMovingModels(true);
+          } else {
+            setIsMovingModels(false);
+          }
+          //if (event.shiftKey) dispatch(selectUnit({ armyId, unitId }));
+          //else
+          dispatch(selectModel({ armyId, unitId, modelId }));
+        }}
+      />
+    </Tooltip>
   );
 }
 
