@@ -15,55 +15,7 @@ const initialState = {
       units: [
         {
           unitId: 0,
-          models: [
-            {
-              modelId: 1,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            },
-            {
-              modelId: 2,
-              X: 20,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            },
-            {
-              modelId: 3,
-              X: 30,
-              Y: 10,
-              isSelected: false,
-              name: "Spore Mines"
-            }
-          ]
-        },
-        {
-          unitId: 1,
-          models: [
-            {
-              modelId: 1,
-              X: 40,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            },
-            {
-              modelId: 2,
-              X: 50,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            },
-            {
-              modelId: 3,
-              X: 60,
-              Y: 10,
-              isSelected: false,
-              name: "Hormagaunts"
-            }
-          ]
+          models: []
         }
       ]
     },
@@ -74,22 +26,7 @@ const initialState = {
       units: [
         {
           unitId: 0,
-          models: [
-            {
-              modelId: 1,
-              X: 10,
-              Y: 10,
-              isSelected: false,
-              name: "Tyranid Warriors With Melee Bio-weapons"
-            },
-            {
-              modelId: 2,
-              X: 30,
-              Y: 10,
-              isSelected: false,
-              name: "Tyranid Warriors With Ranged Bio-weapons"
-            }
-          ]
+          models: []
         }
       ]
     }
