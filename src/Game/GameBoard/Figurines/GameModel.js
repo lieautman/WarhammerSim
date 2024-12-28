@@ -39,7 +39,7 @@ function GameModel({
   ]);
 
   return (
-    <Tooltip title={modelData.name} arrow>
+    <Tooltip title={name} arrow>
       <div
         style={{
           width: `${
