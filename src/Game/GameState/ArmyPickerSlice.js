@@ -95,7 +95,20 @@ const initialState = {
     }
   ]
 };
-
+const sizeDict = new Map([
+  [25, 0.98425196],
+  [28, 1.10236219],
+  [32, 1.25984251],
+  [40, 1.57480314],
+  [50, 1.96850393],
+  [60, 2.36220472],
+  [70, 2.75590551],
+  [80, 3.14960629],
+  [90, 3.54330708],
+  [100, 3.93700787],
+  [130, 5.11811023],
+  [160, 6.29921259]
+]);
 export const ArmyPickerSlice = createSlice({
   name: "ArmyPicker",
   initialState,
@@ -126,10 +139,44 @@ export const ArmyPickerSlice = createSlice({
           .units
       ];
       let newUnit = { ...action.payload.newUnit };
-      if (units.length !== 0)
+
+      // Determine the next unitId
+      if (units.length !== 0) {
         newUnit.unitId = units[units.length - 1].unitId + 1;
-      else newUnit.unitId = 0;
+      } else {
+        newUnit.unitId = 0;
+      }
+
+      // Fetch the model's base width from modelData
+      const modelName = newUnit.models[0].name;
+      const modelDataEntry = state.modelData.find(
+        (model) => model.name === modelName
+      );
+      const modelWidth = modelDataEntry
+        ? parseInt(modelDataEntry.base_size)
+        : 0; // Default to 0 if model not found
+
+      // Calculate X and Y coordinates
+      if (units.length !== 0) {
+        const lastUnit = units[units.length - 1];
+        newUnit.X =
+          lastUnit.X +
+          sizeDict.get(
+            parseInt(modelWidth.substring(0, modelWidth.length - 2))
+          ) *
+            10 +
+          5;
+      } else {
+        newUnit.X = 5;
+      }
+      newUnit.Y =
+        sizeDict.get(parseInt(modelWidth.substring(0, modelWidth.length - 2))) *
+          10 +
+        10;
+
+      // Add the new unit to the army's units
       units.push(newUnit);
+
       return {
         ...state,
         armys: state.armys.map((army) => {
