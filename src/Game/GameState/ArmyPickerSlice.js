@@ -99,6 +99,9 @@ export const ArmyPickerSlice = createSlice({
           )
         ) * 10;
       if (!modelName || !modelWidth || !modelDataEntry) {
+        console.log(
+          "Model not supported! The size for that model is not yet implemented!"
+        );
         return state;
       }
       // Calculate X and Y coordinates

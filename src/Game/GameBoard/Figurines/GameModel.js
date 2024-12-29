@@ -38,34 +38,20 @@ function GameModel({
     [160, 6.29921259]
   ]);
 
+  const modelX =
+    sizeDict.get(
+      parseInt(
+        modelData?.base_size.substring(0, modelData?.base_size.length - 2)
+      )
+    ) *
+    10 *
+    zoom;
   return (
     <Tooltip title={name} arrow>
       <div
         style={{
-          width: `${
-            sizeDict.get(
-              parseInt(
-                modelData?.base_size.substring(
-                  0,
-                  modelData?.base_size.length - 2
-                )
-              )
-            ) *
-            10 *
-            zoom
-          }px`,
-          height: `${
-            sizeDict.get(
-              parseInt(
-                modelData?.base_size.substring(
-                  0,
-                  modelData?.base_size.length - 2
-                )
-              )
-            ) *
-            10 *
-            zoom
-          }px`,
+          width: `${modelX}px`,
+          height: `${modelX}px`,
           borderRadius: "100%",
           backgroundColor: `${isSelected ? selectedColor : color}`,
           position: "absolute",
