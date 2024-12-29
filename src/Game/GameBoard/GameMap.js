@@ -104,6 +104,20 @@ function GameMap({ zoom }) {
         width={`${44 * 10 * zoom}px`}
         height={`${70 * 10 * zoom}px`}
       >
+        <text
+          style={{
+            fill: "red",
+            display: !isMovingModels ? "none" : "block"
+          }}
+          x={`${currentMouseCoords.X * zoom}px`}
+          y={`${currentMouseCoords.Y * zoom}px`}
+        >
+          {Math.sqrt(
+            Math.pow(currentMouseCoords.X - lastSelectedModelCoords.X, 2) +
+              Math.pow(currentMouseCoords.Y - lastSelectedModelCoords.Y, 2)
+          ) / 10}
+          '
+        </text>
         <line
           style={{ display: !isMovingModels ? "none" : "block" }}
           x1={`${lastSelectedModelCoords.X * zoom}px`}

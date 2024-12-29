@@ -47,7 +47,7 @@ function GameModel({
     10 *
     zoom;
   return (
-    <Tooltip title={name} arrow>
+    <Tooltip title={name + ` M: ` + modelData.M + "'"} arrow>
       <div
         style={{
           width: `${modelX}px`,
