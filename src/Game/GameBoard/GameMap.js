@@ -13,6 +13,7 @@ function GameMap({ zoom }) {
   const buildings = useSelector(selectBuildings);
   const map = useSelector(selectMap);
   const lastSelectedModelCoords = useSelector(selectLastSelectedModelCoords);
+  console.log("ceva", armys[0]);
   //model movement
   const [isMovingModels, setIsMovingModels] = useState(false);
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });

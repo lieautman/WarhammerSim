@@ -84,21 +84,21 @@ export const ArmyPickerSlice = createSlice({
         newUnit.unitId = 0;
       }
 
-      // Fetch the model's base width from modelData
-      const modelName = newUnit.models[0].name;
-      const modelDataEntry = state.modelData.find(
-        (model) => model.name === modelName
+      // Fetch the model's base width from modelData (redundant after we incorporate oval bases)
+      const newUnitModelName = newUnit.models[0].name;
+      const newUnitModelDataEntry = state.modelData.find(
+        (model) => model.name === newUnitModelName
       );
-      const modelWidth =
+      const newUnitModelWidth =
         sizeDict.get(
           parseInt(
-            modelDataEntry.base_size.substring(
+            newUnitModelDataEntry.base_size.substring(
               0,
-              modelDataEntry.base_size.length - 2
+              newUnitModelDataEntry.base_size.length - 2
             )
           )
         ) * 10;
-      if (!modelName || !modelWidth || !modelDataEntry) {
+      if (!newUnitModelName || !newUnitModelWidth || !newUnitModelDataEntry) {
         console.log(
           "Model not supported! The size for that model is not yet implemented!"
         );
@@ -106,8 +106,22 @@ export const ArmyPickerSlice = createSlice({
       }
       // Calculate X and Y coordinates
       if (units.length !== 0) {
+        // Fetch the model's base width from modelData (for last unit)
         const lastUnit = units[units.length - 1];
-        newUnit.models[0].X = lastUnit.models[0].X + modelWidth + 5;
+        const lastUnitModelName = lastUnit.models[0].name;
+        const lastUnitModelDataEntry = state.modelData.find(
+          (model) => model.name === lastUnitModelName
+        );
+        const lastUnitModelWidth =
+          sizeDict.get(
+            parseInt(
+              lastUnitModelDataEntry.base_size.substring(
+                0,
+                lastUnitModelDataEntry.base_size.length - 2
+              )
+            )
+          ) * 10;
+        newUnit.models[0].X = lastUnit.models[0].X + lastUnitModelWidth + 5;
       } else {
         newUnit.models[0].X = 5;
       }
