@@ -71,7 +71,7 @@ function GameModel({
           position: "absolute",
           left: `${X * zoom}px`,
           top: `${Y * zoom}px`,
-          zIndex: 100
+          zIndex: 1
         }}
         onClick={(event) => {
           if (!isSelected) {

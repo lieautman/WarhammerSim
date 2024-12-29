@@ -89,25 +89,26 @@ export const ArmyPickerSlice = createSlice({
       const modelDataEntry = state.modelData.find(
         (model) => model.name === modelName
       );
-      const modelWidth = modelDataEntry.base_size;
-
+      const modelWidth =
+        sizeDict.get(
+          parseInt(
+            modelDataEntry.base_size.substring(
+              0,
+              modelDataEntry.base_size.length - 2
+            )
+          )
+        ) * 10;
+      if (!modelName || !modelWidth || !modelDataEntry) {
+        return state;
+      }
       // Calculate X and Y coordinates
       if (units.length !== 0) {
         const lastUnit = units[units.length - 1];
-        newUnit.X =
-          lastUnit.X +
-          sizeDict.get(
-            parseInt(modelWidth.substring(0, modelWidth.length - 2))
-          ) *
-            10 +
-          5;
+        newUnit.models[0].X = lastUnit.models[0].X + modelWidth + 5;
       } else {
-        newUnit.X = 5;
+        newUnit.models[0].X = 5;
       }
-      newUnit.Y =
-        sizeDict.get(parseInt(modelWidth.substring(0, modelWidth.length - 2))) *
-          10 +
-        10;
+      newUnit.models[0].Y = 5;
 
       // Add the new unit to the army's units
       units.push(newUnit);
