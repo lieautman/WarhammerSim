@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   factionData: [],
   modelData: [],
-  lastSelectedModelCoords: {
+  lastSelectedModelData: {
     X: 0,
-    Y: 0
+    Y: 0,
+    baseHeight: 0,
+    baseWidth: 0
   },
   armys: [
     {
@@ -89,39 +91,29 @@ export const ArmyPickerSlice = createSlice({
       const newUnitModelDataEntry = state.modelData.find(
         (model) => model.name === newUnitModelName
       );
-      const newUnitModelWidth =
-        sizeDict.get(
-          parseInt(
-            newUnitModelDataEntry.base_size.substring(
-              0,
-              newUnitModelDataEntry.base_size.length - 2
-            )
+      const newUnitModelWidth = sizeDict.get(
+        parseInt(
+          newUnitModelDataEntry.base_size.substring(
+            0,
+            newUnitModelDataEntry.base_size.length - 2
           )
-        ) * 10;
+        )
+      );
       if (!newUnitModelName || !newUnitModelWidth || !newUnitModelDataEntry) {
         console.log(
           "Model not supported! The size for that model is not yet implemented!"
         );
         return state;
       }
+      newUnit.models[0].baseWidth = newUnitModelWidth;
+      newUnit.models[0].baseHeight = newUnitModelWidth;
+      newUnit.models[0].movement = newUnitModelDataEntry.M;
       // Calculate X and Y coordinates
       if (units.length !== 0) {
         // Fetch the model's base width from modelData (for last unit)
         const lastUnit = units[units.length - 1];
-        const lastUnitModelName = lastUnit.models[0].name;
-        const lastUnitModelDataEntry = state.modelData.find(
-          (model) => model.name === lastUnitModelName
-        );
-        const lastUnitModelWidth =
-          sizeDict.get(
-            parseInt(
-              lastUnitModelDataEntry.base_size.substring(
-                0,
-                lastUnitModelDataEntry.base_size.length - 2
-              )
-            )
-          ) * 10;
-        newUnit.models[0].X = lastUnit.models[0].X + lastUnitModelWidth + 5;
+        newUnit.models[0].X =
+          lastUnit.models[0].X + lastUnit.models[0].baseWidth + 5;
       } else {
         newUnit.models[0].X = 5;
       }
@@ -152,7 +144,7 @@ export const ArmyPickerSlice = createSlice({
     },
     selectModel: (state, action) => {
       const { armyId, unitId, modelId } = action.payload;
-      let modelX, modelY;
+      let modelX, modelY, modelBaseHeight, modelBaseWidth;
       let returnObj = {
         ...state,
         armys: state.armys.map((army) => {
@@ -170,6 +162,8 @@ export const ArmyPickerSlice = createSlice({
                       if (model.modelId === modelId) {
                         modelX = model.X;
                         modelY = model.Y;
+                        modelBaseHeight = model.baseHeight;
+                        modelBaseWidth = model.baseWidth;
                         return {
                           ...model,
                           isSelected: !model.isSelected
@@ -215,10 +209,12 @@ export const ArmyPickerSlice = createSlice({
       };
       returnObj = {
         ...returnObj,
-        lastSelectedModelCoords: {
-          ...state.lastSelectedModelCoords,
+        lastSelectedModelData: {
+          ...state.lastSelectedModelData,
           X: modelX,
-          Y: modelY
+          Y: modelY,
+          baseHeight: modelBaseHeight,
+          baseWidth: modelBaseWidth
         }
       };
       return returnObj;
@@ -257,8 +253,8 @@ export const ArmyPickerSlice = createSlice({
     //   };
     //   returnObj = {
     //     ...returnObj,
-    //     lastSelectedModelCoords: {
-    //       ...state.lastSelectedModelCoords,
+    //     lastSelectedModelData: {
+    //       ...state.lastSelectedModelData,
     //       X: modelX,
     //       Y: modelY
     //     }
@@ -309,7 +305,7 @@ export const {
 export const selectFactionData = (state) => state.ArmyPickerReducer.factionData;
 export const selectModelData = (state) => state.ArmyPickerReducer.modelData;
 export const selectArmys = (state) => state.ArmyPickerReducer.armys;
-export const selectLastSelectedModelCoords = (state) =>
-  state.ArmyPickerReducer.lastSelectedModelCoords;
+export const selectLastSelectedModelData = (state) =>
+  state.ArmyPickerReducer.lastSelectedModelData;
 
 export default ArmyPickerSlice.reducer;

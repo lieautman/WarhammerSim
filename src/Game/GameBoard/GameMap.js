@@ -3,7 +3,7 @@ import GameBuilding from "./Figurines/GameBuilding";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMap, selectBuildings } from "../GameState/GameStateSlice";
 import {
-  selectLastSelectedModelCoords,
+  selectLastSelectedModelData,
   selectArmys,
   moveSelectedModels
 } from "../GameState/ArmyPickerSlice";
@@ -12,7 +12,7 @@ function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);
   const buildings = useSelector(selectBuildings);
   const map = useSelector(selectMap);
-  const lastSelectedModelCoords = useSelector(selectLastSelectedModelCoords);
+  const lastSelectedModelData = useSelector(selectLastSelectedModelData);
   //model movement
   const [isMovingModels, setIsMovingModels] = useState(false);
   const [startMouseOffset, setStartMouseOffset] = useState({ X: 0, Y: 0 });
@@ -33,10 +33,10 @@ function GameMap({ zoom }) {
           event.preventDefault();
           const X =
             (event.clientX - startMouseOffset.X) / zoom +
-            lastSelectedModelCoords.X;
+            lastSelectedModelData.X;
           const Y =
             (event.clientY - startMouseOffset.Y) / zoom +
-            lastSelectedModelCoords.Y;
+            lastSelectedModelData.Y;
           dispatch(
             moveSelectedModels({
               X: X,
@@ -56,6 +56,9 @@ function GameMap({ zoom }) {
             unitId={unit.unitId}
             armyId={armys[0].armyId}
             zoom={zoom}
+            movement={model.movement}
+            baseWidth={model.baseWidth}
+            baseHeight={model.baseHeight}
             X={model.X}
             Y={model.Y}
             isSelected={model.isSelected}
@@ -75,6 +78,9 @@ function GameMap({ zoom }) {
             unitId={unit.unitId}
             armyId={armys[1].armyId}
             zoom={zoom}
+            movement={model.movement}
+            baseWidth={model.baseWidth}
+            baseHeight={model.baseHeight}
             X={model.X}
             Y={model.Y}
             isSelected={model.isSelected}
@@ -113,17 +119,25 @@ function GameMap({ zoom }) {
           y={`${currentMouseCoords.Y * zoom}px`}
         >
           {Math.sqrt(
-            Math.pow(currentMouseCoords.X - lastSelectedModelCoords.X, 2) +
-              Math.pow(currentMouseCoords.Y - lastSelectedModelCoords.Y, 2)
+            Math.pow(currentMouseCoords.X - lastSelectedModelData.X, 2) +
+              Math.pow(currentMouseCoords.Y - lastSelectedModelData.Y, 2)
           ) / 10}
           '
         </text>
         <line
           style={{ display: !isMovingModels ? "none" : "block" }}
-          x1={`${lastSelectedModelCoords.X * zoom}px`}
-          y1={`${lastSelectedModelCoords.Y * zoom}px`}
-          x2={`${currentMouseCoords.X * zoom}px`}
-          y2={`${currentMouseCoords.Y * zoom}px`}
+          x1={`${lastSelectedModelData.X * zoom}px`}
+          y1={`${lastSelectedModelData.Y * zoom}px`}
+          x2={`${
+            (currentMouseCoords.X +
+              (lastSelectedModelData.baseHeight / 2) * 10) *
+            zoom
+          }px`}
+          y2={`${
+            (currentMouseCoords.Y +
+              (lastSelectedModelData.baseWidth / 2) * 10) *
+            zoom
+          }px`}
           stroke="yellow"
           stroke-width="4"
         />
