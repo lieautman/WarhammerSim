@@ -138,7 +138,16 @@ function GameMap({ zoom }) {
               (lastSelectedModelData.baseWidth / 2) * 10) *
             zoom
           }px`}
-          stroke="yellow"
+          stroke={
+            lastSelectedModelData.movement >
+            Math.sqrt(
+              Math.pow(currentMouseCoords.X - lastSelectedModelData.X, 2) +
+                Math.pow(currentMouseCoords.Y - lastSelectedModelData.Y, 2)
+            ) /
+              10
+              ? "yellow"
+              : "red"
+          }
           stroke-width="4"
         />
       </svg>

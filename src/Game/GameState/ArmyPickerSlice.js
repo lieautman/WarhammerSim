@@ -7,7 +7,8 @@ const initialState = {
     X: 0,
     Y: 0,
     baseHeight: 0,
-    baseWidth: 0
+    baseWidth: 0,
+    movement: 0
   },
   armys: [
     {
@@ -144,7 +145,7 @@ export const ArmyPickerSlice = createSlice({
     },
     selectModel: (state, action) => {
       const { armyId, unitId, modelId } = action.payload;
-      let modelX, modelY, modelBaseHeight, modelBaseWidth;
+      let modelX, modelY, modelBaseHeight, modelBaseWidth, modelMovement;
       let returnObj = {
         ...state,
         armys: state.armys.map((army) => {
@@ -164,6 +165,7 @@ export const ArmyPickerSlice = createSlice({
                         modelY = model.Y;
                         modelBaseHeight = model.baseHeight;
                         modelBaseWidth = model.baseWidth;
+                        modelMovement = model.movement;
                         return {
                           ...model,
                           isSelected: !model.isSelected
@@ -214,7 +216,8 @@ export const ArmyPickerSlice = createSlice({
           X: modelX,
           Y: modelY,
           baseHeight: modelBaseHeight,
-          baseWidth: modelBaseWidth
+          baseWidth: modelBaseWidth,
+          movement: modelMovement
         }
       };
       return returnObj;
