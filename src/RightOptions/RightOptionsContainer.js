@@ -1,3 +1,4 @@
+import ListUploaderArmy1 from "./ListUploader/ListUploaderArmy1";
 import UnitlPickerArmy1 from "./UnitPicker/UnitlPickerArmy1";
 import UnitlPickerArmy2 from "./UnitPicker/UnitlPickerArmy2";
 
@@ -21,6 +22,7 @@ function RightOptionsContainer() {
       >
         <UnitlPickerArmy1 />
         <UnitlPickerArmy2 />
+        <ListUploaderArmy1 />
       </div>
     </div>
   );
