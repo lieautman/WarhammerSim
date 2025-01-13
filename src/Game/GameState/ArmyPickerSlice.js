@@ -59,6 +59,11 @@ export const ArmyPickerSlice = createSlice({
     loadModelData: (state, action) => {
       return { ...state, modelData: action.payload };
     },
+    importFromNewRecruit: (state, actions) => {
+      const factionName = actions.payload.factionName;
+      const units = actions.payload.units;
+      return { ...state };
+    },
     selectFaction: (state, action) => {
       const { armyId, factionId, factionName } = action.payload;
       return {

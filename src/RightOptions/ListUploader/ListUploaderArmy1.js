@@ -24,7 +24,9 @@ function ListUploaderArmy1() {
               const data = JSON.parse(armyJson);
               const selections = data.roster.forces[0].selections;
               const names = selections.slice(3).map((item) => item.name);
+              const factionName = data.roster.forces[0].catalogueName;
               console.log(names);
+              console.log(factionName);
             } catch (ex) {
               console.log("error", ex);
             }

@@ -148,7 +148,7 @@ function GameMap({ zoom }) {
               ? "yellow"
               : "red"
           }
-          stroke-width="4"
+          strokeWidth="4"
         />
       </svg>
     </div>
