@@ -15,23 +15,13 @@ const initialState = {
       armyId: 0,
       factionId: null,
       factionName: "",
-      units: [
-        {
-          unitId: 0,
-          models: []
-        }
-      ]
+      units: []
     },
     {
       armyId: 1,
       factionId: null,
       factionName: "",
-      units: [
-        {
-          unitId: 0,
-          models: []
-        }
-      ]
+      units: []
     }
   ]
 };
@@ -49,6 +39,53 @@ const sizeDict = new Map([
   [130, 5.11811023],
   [160, 6.29921259]
 ]);
+
+const AddUnitToUnitList = (newUnit, unitList, state) => {
+  // Determine the next unitId
+  if (unitList.length !== 0) {
+    newUnit.unitId = unitList[unitList.length - 1].unitId + 1;
+  } else {
+    newUnit.unitId = 0;
+  }
+
+  // Fetch the model's base width from modelData (redundant after we incorporate oval bases)
+  const newUnitModelName = newUnit.models[0].name;
+  const newUnitModelDataEntry = state.modelData.find(
+    (model) => model.name.toUpperCase() === newUnitModelName.toUpperCase()
+  );
+  const newUnitModelWidth = sizeDict.get(
+    parseInt(
+      newUnitModelDataEntry.base_size.substring(
+        0,
+        newUnitModelDataEntry.base_size.length - 2
+      )
+    )
+  );
+  if (!newUnitModelName || !newUnitModelWidth || !newUnitModelDataEntry) {
+    console.log(
+      "Model not supported! The size for that model is not yet implemented!"
+    );
+    return state;
+  }
+  newUnit.models[0].baseWidth = newUnitModelWidth;
+  newUnit.models[0].baseHeight = newUnitModelWidth;
+  newUnit.models[0].movement = newUnitModelDataEntry.M;
+  // Calculate X and Y coordinates
+  if (unitList.length !== 0) {
+    // Fetch the model's base width from modelData (for last unit)
+    const lastUnit = unitList[unitList.length - 1];
+    newUnit.models[0].X =
+      lastUnit.models[0].X + lastUnit.models[0].baseWidth * 10 + 5;
+  } else {
+    newUnit.models[0].X = 5;
+  }
+  newUnit.models[0].Y = 5;
+
+  // Add the new unit to the army's units
+  unitList.push(newUnit);
+  return unitList;
+};
+
 export const ArmyPickerSlice = createSlice({
   name: "ArmyPicker",
   initialState,
@@ -65,6 +102,27 @@ export const ArmyPickerSlice = createSlice({
       const faction = state.factionData.find(
         (faction) => faction.name === factionNameShort
       );
+
+      let currentUnits = [
+        ...state.armys.find((army) => army.armyId === armyId).units
+      ];
+
+      units.forEach((unitName) => {
+        let newUnit = {
+          models: [
+            {
+              modelId: 1,
+              X: 0,
+              Y: 0,
+              isSelected: false,
+              name: unitName
+            }
+          ]
+        };
+
+        currentUnits = AddUnitToUnitList(newUnit, currentUnits, state);
+      });
+
       return {
         ...state,
         armys: state.armys.map((army) => {
@@ -73,7 +131,7 @@ export const ArmyPickerSlice = createSlice({
               ...army,
               factionId: faction.id,
               factionName: faction.name,
-              units: []
+              units: currentUnits
             };
           } else {
             return { ...army };
@@ -95,60 +153,19 @@ export const ArmyPickerSlice = createSlice({
       };
     },
     addUnitToArmy: (state, action) => {
-      let units = [
+      let currentUnits = [
         ...state.armys.find((army) => army.armyId === action.payload.armyId)
           .units
       ];
       let newUnit = { ...action.payload.newUnit };
 
-      // Determine the next unitId
-      if (units.length !== 0) {
-        newUnit.unitId = units[units.length - 1].unitId + 1;
-      } else {
-        newUnit.unitId = 0;
-      }
-
-      // Fetch the model's base width from modelData (redundant after we incorporate oval bases)
-      const newUnitModelName = newUnit.models[0].name;
-      const newUnitModelDataEntry = state.modelData.find(
-        (model) => model.name === newUnitModelName
-      );
-      const newUnitModelWidth = sizeDict.get(
-        parseInt(
-          newUnitModelDataEntry.base_size.substring(
-            0,
-            newUnitModelDataEntry.base_size.length - 2
-          )
-        )
-      );
-      if (!newUnitModelName || !newUnitModelWidth || !newUnitModelDataEntry) {
-        console.log(
-          "Model not supported! The size for that model is not yet implemented!"
-        );
-        return state;
-      }
-      newUnit.models[0].baseWidth = newUnitModelWidth;
-      newUnit.models[0].baseHeight = newUnitModelWidth;
-      newUnit.models[0].movement = newUnitModelDataEntry.M;
-      // Calculate X and Y coordinates
-      if (units.length !== 0) {
-        // Fetch the model's base width from modelData (for last unit)
-        const lastUnit = units[units.length - 1];
-        newUnit.models[0].X =
-          lastUnit.models[0].X + lastUnit.models[0].baseWidth + 5;
-      } else {
-        newUnit.models[0].X = 5;
-      }
-      newUnit.models[0].Y = 5;
-
-      // Add the new unit to the army's units
-      units.push(newUnit);
+      currentUnits = AddUnitToUnitList(newUnit, currentUnits, state);
 
       return {
         ...state,
         armys: state.armys.map((army) => {
           if (army.armyId === action.payload.armyId) {
-            return { ...army, units: units };
+            return { ...army, units: currentUnits };
           } else {
             return { ...army };
           }

@@ -80,8 +80,8 @@ function UnitlPickerArmy2() {
                             models: [
                               {
                                 modelId: 1,
-                                X: 10,
-                                Y: 10,
+                                X: 0,
+                                Y: 0,
                                 isSelected: false,
                                 name: el.name
                               }
