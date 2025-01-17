@@ -60,16 +60,32 @@ export const ArmyPickerSlice = createSlice({
       return { ...state, modelData: action.payload };
     },
     importFromNewRecruit: (state, actions) => {
-      const factionName = actions.payload.factionName;
-      const units = actions.payload.units;
-      return { ...state };
+      const { factionName, units, armyId } = actions.payload;
+      const factionNameShort = factionName.split(" - ")[1];
+      const faction = state.factionData.find(
+        (faction) => faction.name === factionNameShort
+      );
+      return {
+        ...state,
+        armys: state.armys.map((army) => {
+          if (army.armyId === armyId) {
+            return {
+              ...army,
+              factionId: faction.id,
+              factionName: faction.name,
+              units: []
+            };
+          } else {
+            return { ...army };
+          }
+        })
+      };
     },
     selectFaction: (state, action) => {
       const { armyId, factionId, factionName } = action.payload;
       return {
         ...state,
         armys: state.armys.map((army) => {
-          // Find the target army
           if (army.armyId === armyId) {
             return { ...army, factionId, factionName, units: [] };
           } else {
@@ -300,6 +316,7 @@ export const ArmyPickerSlice = createSlice({
 export const {
   loadFactionData,
   loadModelData,
+  importFromNewRecruit,
   selectFaction,
   addUnitToArmy,
   addModelToUnit,

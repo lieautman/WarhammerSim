@@ -1,8 +1,11 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { importFromNewRecruit } from "../../Game/GameState/ArmyPickerSlice";
 
 function ListUploaderArmy1() {
   const [armyJson, setArmyJson] = useState("");
+  const dispatch = useDispatch();
   return (
     <div
       style={{
@@ -25,8 +28,9 @@ function ListUploaderArmy1() {
               const selections = data.roster.forces[0].selections;
               const names = selections.slice(3).map((item) => item.name);
               const factionName = data.roster.forces[0].catalogueName;
-              console.log(names);
-              console.log(factionName);
+              dispatch(
+                importFromNewRecruit({ factionName, units: names, armyId: 0 })
+              );
             } catch (ex) {
               console.log("error", ex);
             }
