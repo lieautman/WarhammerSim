@@ -1,7 +1,7 @@
 {
   "homepage": "http://lieautman.github.io/WarhammerSim",
   "name": "warhammer-sim",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.14.0",
