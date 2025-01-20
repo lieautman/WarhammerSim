@@ -1,8 +1,10 @@
-import { selectBuildings } from "../../Game/GameState/GameStateSlice";
 import { useSelector } from "react-redux";
 import { Button, Checkbox, Grid2 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { removeBuilding } from "../../Game/GameState/GameStateSlice";
+import {
+  selectBuildings,
+  removeBuilding
+} from "../../Game/GameState/BoardSlice";
 
 function ListOfBuildings() {
   const dispatch = useDispatch();

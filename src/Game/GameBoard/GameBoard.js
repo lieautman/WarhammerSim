@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
   modifyMapCoordinates,
-  resetMapCoordinates
-} from "../GameState/GameStateSlice";
-import { selectMap } from "../GameState/GameStateSlice";
+  resetMapCoordinates,
+  selectMap
+} from "../GameState/BoardSlice";
 import { Button } from "@mui/material";
 
 function GameBoard() {

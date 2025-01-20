@@ -1,7 +1,7 @@
 import GameModel from "./Figurines/GameModel";
 import GameBuilding from "./Figurines/GameBuilding";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMap, selectBuildings } from "../GameState/GameStateSlice";
+import { selectMap, selectBuildings } from "../GameState/BoardSlice";
 import {
   selectLastSelectedModelData,
   selectArmys,

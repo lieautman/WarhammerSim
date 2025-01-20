@@ -8,8 +8,8 @@ const initialState = {
   buildings: []
 };
 
-export const GameStateSlice = createSlice({
-  name: "GameState",
+export const BoardSlice = createSlice({
+  name: "BoardState",
   initialState,
   reducers: {
     modifyMapCoordinates: (state, action) => {
@@ -54,9 +54,9 @@ export const {
   resetMapCoordinates,
   addBuilding,
   removeBuilding
-} = GameStateSlice.actions;
+} = BoardSlice.actions;
 
-export const selectMap = (state) => state.GameStateReducer.map;
-export const selectBuildings = (state) => state.GameStateReducer.buildings;
+export const selectMap = (state) => state.BoardReducer.map;
+export const selectBuildings = (state) => state.BoardReducer.buildings;
 
-export default GameStateSlice.reducer;
+export default BoardSlice.reducer;
