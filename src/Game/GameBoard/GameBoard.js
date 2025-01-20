@@ -6,7 +6,7 @@ import {
   modifyMapCoordinates,
   resetMapCoordinates,
   selectMap
-} from "../GameState/BoardSlice";
+} from "../GameState/MapSlice";
 import { Button } from "@mui/material";
 
 function GameBoard() {

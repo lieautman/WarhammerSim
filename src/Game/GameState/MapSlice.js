@@ -7,8 +7,8 @@ const initialState = {
   }
 };
 
-export const BoardSlice = createSlice({
-  name: "BoardState",
+export const MapSlice = createSlice({
+  name: "MapState",
   initialState,
   reducers: {
     modifyMapCoordinates: (state, action) => {
@@ -26,8 +26,8 @@ export const BoardSlice = createSlice({
   }
 });
 
-export const { modifyMapCoordinates, resetMapCoordinates } = BoardSlice.actions;
+export const { modifyMapCoordinates, resetMapCoordinates } = MapSlice.actions;
 
-export const selectMap = (state) => state.BoardReducer.map;
+export const selectMap = (state) => state.MapReducer.map;
 
-export default BoardSlice.reducer;
+export default MapSlice.reducer;
