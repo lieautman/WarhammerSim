@@ -9,7 +9,7 @@ import {
   selectModelData,
   selectArmys,
   addUnitToArmy
-} from "../../Game/GameState/ArmyPickerSlice";
+} from "../../Game/GameState/ArmySlice";
 
 function UnitlPickerArmy1() {
   const modelData = useSelector(selectModelData);

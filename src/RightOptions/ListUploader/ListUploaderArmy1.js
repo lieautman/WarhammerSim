@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { importFromNewRecruit } from "../../Game/GameState/ArmyPickerSlice";
+import { importFromNewRecruit } from "../../Game/GameState/ArmySlice";
 
 function ListUploaderArmy1() {
   const [armyJson, setArmyJson] = useState("");

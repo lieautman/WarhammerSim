@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { selectModel } from "../../GameState/ArmyPickerSlice"; //selectUnit
+import { selectModel } from "../../GameState/ArmySlice"; //selectUnit
 import { Tooltip } from "@mui/material";
 
 function GameModel({

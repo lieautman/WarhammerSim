@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import {
   selectFaction,
   selectFactionData
-} from "../../Game/GameState/ArmyPickerSlice";
+} from "../../Game/GameState/ArmySlice";
 import { Button, Grid2 } from "@mui/material";
 
 function FactionPickerArmy1() {

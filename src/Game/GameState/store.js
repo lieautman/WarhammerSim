@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import MapReducer from "./MapSlice";
 import BuildingReducer from "./BuildingSlice";
-import ArmyPickerReducer from "./ArmyPickerSlice";
+import ArmyReducer from "./ArmySlice";
 export const store = configureStore({
-  reducer: { MapReducer, BuildingReducer, ArmyPickerReducer }
+  reducer: { MapReducer, BuildingReducer, ArmyReducer }
 });

@@ -7,7 +7,7 @@ import {
   selectLastSelectedModelData,
   selectArmys,
   moveSelectedModels
-} from "../GameState/ArmyPickerSlice";
+} from "../GameState/ArmySlice";
 import { useState } from "react";
 function GameMap({ zoom }) {
   const armys = useSelector(selectArmys);

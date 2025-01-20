@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import GameBoard from "./GameBoard/GameBoard";
-import { loadFactionData, loadModelData } from "./GameState/ArmyPickerSlice";
+import { loadFactionData, loadModelData } from "./GameState/ArmySlice";
 import { useEffect, useState } from "react";
 
 function Game() {

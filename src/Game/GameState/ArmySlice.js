@@ -86,8 +86,8 @@ const AddUnitToUnitList = (newUnit, unitList, state) => {
   return unitList;
 };
 
-export const ArmyPickerSlice = createSlice({
-  name: "ArmyPicker",
+export const ArmySlice = createSlice({
+  name: "ArmyState",
   initialState,
   reducers: {
     loadFactionData: (state, action) => {
@@ -342,12 +342,12 @@ export const {
   selectModel,
   //selectUnit,
   moveSelectedModels
-} = ArmyPickerSlice.actions;
+} = ArmySlice.actions;
 
-export const selectFactionData = (state) => state.ArmyPickerReducer.factionData;
-export const selectModelData = (state) => state.ArmyPickerReducer.modelData;
-export const selectArmys = (state) => state.ArmyPickerReducer.armys;
+export const selectFactionData = (state) => state.ArmyReducer.factionData;
+export const selectModelData = (state) => state.ArmyReducer.modelData;
+export const selectArmys = (state) => state.ArmyReducer.armys;
 export const selectLastSelectedModelData = (state) =>
-  state.ArmyPickerReducer.lastSelectedModelData;
+  state.ArmyReducer.lastSelectedModelData;
 
-export default ArmyPickerSlice.reducer;
+export default ArmySlice.reducer;
