@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   selectBuildings,
   removeBuilding
-} from "../../Game/GameState/BoardSlice";
+} from "../../Game/GameState/BuildingSlice";
 
 function ListOfBuildings() {
   const dispatch = useDispatch();

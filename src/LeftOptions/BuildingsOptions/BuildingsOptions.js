@@ -5,7 +5,7 @@ import { ExpandMore } from "@mui/icons-material";
 import { Button, Grid2, TextField, Checkbox } from "@mui/material";
 import ListOfBuildings from "./ListOfBuildings";
 import { useDispatch } from "react-redux";
-import { addBuilding } from "../../Game/GameState/BoardSlice";
+import { addBuilding } from "../../Game/GameState/BuildingSlice";
 import { useState } from "react";
 
 function BuildingSOptions() {
